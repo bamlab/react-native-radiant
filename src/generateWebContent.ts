@@ -1,6 +1,7 @@
 import ReactDOMServer from "react-dom/server";
 import { transformRNToRNWeb } from "./transformRNToRNWeb";
 import { RenderResult } from "@testing-library/react-native";
+import { getFontsHTML } from "./config/fonts";
 
 export const generateWebContent = (renderedComponent: RenderResult) => {
   const pageBody = ReactDOMServer.renderToString(
@@ -10,10 +11,13 @@ export const generateWebContent = (renderedComponent: RenderResult) => {
   const pageStyle =
     require("react-native-web")["StyleSheet"].getSheet().textContent;
 
+  const fontsHTML = getFontsHTML();
+
   const pageContent = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
+        ${fontsHTML}
       <style>
         ${pageStyle}
       </style>

@@ -1,3 +1,4 @@
+import { configure, globalFonts } from "./config/configure";
 import { generateVisualSnapshot } from "./generateVisualSnapshot";
 import { generateWebContent } from "./generateWebContent";
 import { RenderResult } from "@testing-library/react-native";
@@ -21,3 +22,5 @@ export const renderComponentToWebScreenshot = async ({
     pageContent,
   });
 };
+
+export { configure, globalFonts };
