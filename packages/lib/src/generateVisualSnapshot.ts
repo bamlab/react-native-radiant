@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer from 'puppeteer';
 
 interface generateVisualSnapshotParams {
   height: number;
@@ -24,7 +24,7 @@ export const generateVisualSnapshot = async ({
   await page.setContent(pageContent);
 
   const image = await page.screenshot({
-    encoding: "base64",
+    encoding: 'base64',
   });
 
   await browser.close();

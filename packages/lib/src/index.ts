@@ -1,7 +1,7 @@
-import { configure, globalFonts } from "./config/configure";
-import { generateVisualSnapshot } from "./generateVisualSnapshot";
-import { generateWebContent } from "./generateWebContent";
-import { RenderResult } from "@testing-library/react-native";
+import { configure, globalFonts } from './config/configure';
+import { generateVisualSnapshot } from './generateVisualSnapshot';
+import { generateWebContent } from './generateWebContent';
+import { RenderResult } from '@testing-library/react-native';
 
 interface RenderComponentToWebScreenshotParams {
   renderedComponent: RenderResult;

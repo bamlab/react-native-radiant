@@ -1,8 +1,8 @@
-import React from "react";
-import { ReactTestRendererNode } from "react-test-renderer";
+import React from 'react';
+import { ReactTestRendererNode } from 'react-test-renderer';
 
 export const transformRNToRNWeb = (
-  jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null
+  jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
 ): null | React.ReactNode | React.ReactNode[] => {
   if (jsonTree === null) return null;
 
@@ -10,16 +10,12 @@ export const transformRNToRNWeb = (
     return jsonTree.map(transformRNToRNWeb);
   }
 
-  if (typeof jsonTree === "string") {
+  if (typeof jsonTree === 'string') {
     return jsonTree;
   }
 
-  var nodeType = jsonTree.type.replace("RCT", "");
-  var RNWebEl = require("react-native-web")[nodeType];
+  var nodeType = jsonTree.type.replace('RCT', '');
+  var RNWebEl = require('react-native-web')[nodeType];
 
-  return React.createElement(
-    RNWebEl,
-    jsonTree.props,
-    transformRNToRNWeb(jsonTree.children)
-  );
+  return React.createElement(RNWebEl, jsonTree.props, transformRNToRNWeb(jsonTree.children));
 };

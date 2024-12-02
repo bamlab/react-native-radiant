@@ -1,9 +1,33 @@
 {
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-      "*.ts": "${capture}.test.ts, ${capture}.test.ts.snap",
-      "*.tsx": "${capture}.test.tsx, ${capture}.test.tsx.snap",
-      ".eslintrc.js": "*.eslintrc.js"
-    }
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.sortJSON": "explicit",
+    "source.organizeImports": "never" // use eslint for this, to enforce in CI
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.test.ts, ${capture}.test.ts.snap",
+    "*.tsx": "${capture}.test.tsx, ${capture}.test.tsx.snap",
+    ".eslintrc.js": "*.eslintrc.js"
   }
-  
+}

@@ -10,8 +10,5 @@
     "esModuleInterop": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "./src/**/*",
-    "./example/**/*"
-  ]
+  "include": ["./src/**/*", "./example/**/*"]
 }
