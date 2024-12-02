@@ -1,19 +1,13 @@
 {
-  "name": "kin-monorepo",
+  "name": "kin",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "start:example": "yarn workspace example start",
-    "test:example": "yarn workspace example test",
-    "build:core": "yarn workspace lib build",
-    "types": "yarn workspaces foreach run types"
+    "build": "tsup",
+    "types": "tsc"
   },
   "dependencies": {
     "@testing-library/react-native": "^12.8.1",
@@ -28,7 +22,6 @@
     "@types/react-dom": "^18.3.1",
     "@types/react-native-web": "^0.19.0",
     "@types/react-test-renderer": "^18.3.0",
-    "prettier": "^3.4.1",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3"
