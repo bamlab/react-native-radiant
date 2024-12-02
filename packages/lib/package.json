@@ -1,0 +1,30 @@
+{
+  "name": "kin",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup",
+    "types": "tsc"
+  },
+  "dependencies": {
+    "@testing-library/react-native": "^12.8.1",
+    "puppeteer": "^23.9.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-native": "^0.76.2",
+    "react-native-web": "^0.19.13",
+    "react-test-renderer": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^18.3.1",
+    "@types/react-native-web": "^0.19.0",
+    "@types/react-test-renderer": "^18.3.0",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  },
+  "packageManager": "yarn@4.3.1+sha256.2535167e742927e1d2a1610d5004576e4e8f764d2ca5470d19536790f55cd6e2"
+}
