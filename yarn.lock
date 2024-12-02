@@ -2931,7 +2931,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.12":
+"@types/jest-image-snapshot@npm:^6":
+  version: 6.4.0
+  resolution: "@types/jest-image-snapshot@npm:6.4.0"
+  dependencies:
+    "@types/jest": "npm:*"
+    "@types/pixelmatch": "npm:*"
+    ssim.js: "npm:^3.1.1"
+  checksum: 10c0/99f3a0dc5a07fa342b72098b7af02c1371676bc69cc0984c3b720a0c78f55c9464de8a4feb1cd5a97b276bc24501c46fd5d5702ee16574eff7dbdfd0fd3a0866
+  languageName: node
+  linkType: hard
+
+"@types/jest@npm:*, @types/jest@npm:^29.5.12":
   version: 29.5.14
   resolution: "@types/jest@npm:29.5.14"
   dependencies:
@@ -2974,6 +2985,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~6.20.0"
   checksum: 10c0/0fbb6d29fa35d807f0223a4db709c598ac08d66820240a2cd6a8a69b8f0bc921d65b339d850a666b43b4e779f967e6ed6cf6f0fca3575e08241e6b900364c234
+  languageName: node
+  linkType: hard
+
+"@types/pixelmatch@npm:*":
+  version: 5.2.6
+  resolution: "@types/pixelmatch@npm:5.2.6"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/1045bde53809b7d555e70fb6a490472879fa8d322bc39cb3f15985b877e9fc5ccf0c0b7d97da936b52d76305aa8d2d6657c03b220af3196d17520cfaa2ecbaa1
   languageName: node
   linkType: hard
 
@@ -3973,6 +3993,13 @@ __metadata:
     ansi-styles: "npm:^4.1.0"
     supports-color: "npm:^7.1.0"
   checksum: 10c0/4a3fef5cc34975c898ffe77141450f679721df9dde00f6c304353fa9c8b571929123b26a0e4617bde5018977eb655b31970c297b91b63ee83bb82aeb04666880
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^5.2.0":
+  version: 5.3.0
+  resolution: "chalk@npm:5.3.0"
+  checksum: 10c0/8297d436b2c0f95801103ff2ef67268d362021b8210daf8ddbe349695333eb3610a71122172ff3b0272f1ef2cf7cc2c41fdaa4715f52e49ffe04c56340feed09
   languageName: node
   linkType: hard
 
@@ -5068,6 +5095,7 @@ __metadata:
     "@react-navigation/bottom-tabs": "npm:^7.0.0"
     "@react-navigation/native": "npm:^7.0.0"
     "@types/jest": "npm:^29.5.12"
+    "@types/jest-image-snapshot": "npm:^6"
     "@types/react": "npm:~18.3.12"
     "@types/react-test-renderer": "npm:^18.3.0"
     expo: "npm:~52.0.11"
@@ -5084,6 +5112,8 @@ __metadata:
     expo-web-browser: "npm:~14.0.1"
     jest: "npm:^29.2.1"
     jest-expo: "npm:~52.0.2"
+    jest-image-snapshot: "npm:^6.4.0"
+    jest-watch-typeahead: "npm:^2.2.2"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     react-native: "npm:0.76.3"
@@ -5850,6 +5880,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"get-stdin@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "get-stdin@npm:5.0.1"
+  checksum: 10c0/309f933f08a4d6783681674451027802299124e596324cd628c5e5138bbc5de843bbaa345a8ce0fc72304869f9de3b50086407aca551e292b13f7cb02351479e
+  languageName: node
+  linkType: hard
+
 "get-stream@npm:^4.0.0":
   version: 4.1.0
   resolution: "get-stream@npm:4.1.0"
@@ -5951,6 +5988,13 @@ __metadata:
     merge2: "npm:^1.4.1"
     slash: "npm:^3.0.0"
   checksum: 10c0/b39511b4afe4bd8a7aead3a27c4ade2b9968649abab0a6c28b1a90141b96ca68ca5db1302f7c7bd29eab66bf51e13916b8e0a3d0ac08f75e1e84a39b35691189
+  languageName: node
+  linkType: hard
+
+"glur@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "glur@npm:1.1.2"
+  checksum: 10c0/756fcbc7f1a8576755811e31367feeaffbd13b7f20d788672bccbd65956839065e256621a7576f4ab321352b28a0aea442d64567bca23882526b891767ffbe3e
   languageName: node
   linkType: hard
 
@@ -6857,6 +6901,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-image-snapshot@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "jest-image-snapshot@npm:6.4.0"
+  dependencies:
+    chalk: "npm:^4.0.0"
+    get-stdin: "npm:^5.0.1"
+    glur: "npm:^1.1.2"
+    lodash: "npm:^4.17.4"
+    pixelmatch: "npm:^5.1.0"
+    pngjs: "npm:^3.4.0"
+    rimraf: "npm:^2.6.2"
+    ssim.js: "npm:^3.1.1"
+  peerDependencies:
+    jest: ">=20 <=29"
+  peerDependenciesMeta:
+    jest:
+      optional: true
+  checksum: 10c0/7f00c4b1aade2de2d12d2ed3da4a6005ad921eb637a26077b271df9edc0fcb90384e93eebb8a8ff8702422086c34868c026bfa9dab38a82cb1dc747e1de74888
+  languageName: node
+  linkType: hard
+
 "jest-leak-detector@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-leak-detector@npm:29.7.0"
@@ -7093,6 +7158,23 @@ __metadata:
   peerDependencies:
     jest: ^27.0.0 || ^28.0.0 || ^29.0.0
   checksum: 10c0/2f47433ac6dd1dfd3015182b325108bc95e15dfbb577e7730468172b15b7d91be443f4d68a3849963e1f29e96d031eaf2b79cae6f45e64630383129a2d5e2e2d
+  languageName: node
+  linkType: hard
+
+"jest-watch-typeahead@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "jest-watch-typeahead@npm:2.2.2"
+  dependencies:
+    ansi-escapes: "npm:^6.0.0"
+    chalk: "npm:^5.2.0"
+    jest-regex-util: "npm:^29.0.0"
+    jest-watcher: "npm:^29.0.0"
+    slash: "npm:^5.0.0"
+    string-length: "npm:^5.0.1"
+    strip-ansi: "npm:^7.0.1"
+  peerDependencies:
+    jest: ^27.0.0 || ^28.0.0 || ^29.0.0
+  checksum: 10c0/5a55a571d616958cd6c6b52c4bf57cfaa97132cd9681af8ebfa8ebde9fa1d829426ff36f4ef2eaa867142ee97577fdad1735c58c3db62cbb33a39ad97125ee00
   languageName: node
   linkType: hard
 
@@ -7357,6 +7439,7 @@ __metadata:
     "@types/react-dom": "npm:^18.3.1"
     "@types/react-native-web": "npm:^0.19.0"
     "@types/react-test-renderer": "npm:^18.3.0"
+    jest-image-snapshot: "npm:^6.4.0"
     prettier: "npm:^3.4.1"
     puppeteer: "npm:^23.9.0"
     react: "npm:^18.3.1"
@@ -7601,7 +7684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.19, lodash@npm:^4.17.21":
+"lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -8812,6 +8895,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pixelmatch@npm:^5.1.0":
+  version: 5.3.0
+  resolution: "pixelmatch@npm:5.3.0"
+  dependencies:
+    pngjs: "npm:^6.0.0"
+  bin:
+    pixelmatch: bin/pixelmatch
+  checksum: 10c0/30850661db29b57cefbe6cf36e930b7517aea4e0ed129e85fcc8ec04a7e6e7648a822a972f8e01d2d3db268ca3c735555caf6b8099a164d8b64d105986d682d2
+  languageName: node
+  linkType: hard
+
 "pkg-dir@npm:^3.0.0":
   version: 3.0.0
   resolution: "pkg-dir@npm:3.0.0"
@@ -8841,10 +8935,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pngjs@npm:^3.3.0":
+"pngjs@npm:^3.3.0, pngjs@npm:^3.4.0":
   version: 3.4.0
   resolution: "pngjs@npm:3.4.0"
   checksum: 10c0/88ee73e2ad3f736e0b2573722309eb80bd2aa28916f0862379b4fd0f904751b4f61bb6bd1ecd7d4242d331f2b5c28c13309dd4b7d89a9b78306e35122fdc5011
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "pngjs@npm:6.0.0"
+  checksum: 10c0/ac23ea329b1881d1a10575aff58116dc27b894ec3f5b84ba15c7f527d21e609fbce7ba16d48f8ccb86c7ce45ceed622472765476ab2875949d4bec55e153f87a
   languageName: node
   linkType: hard
 
@@ -9717,6 +9818,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rimraf@npm:^2.6.2":
+  version: 2.7.1
+  resolution: "rimraf@npm:2.7.1"
+  dependencies:
+    glob: "npm:^7.1.3"
+  bin:
+    rimraf: ./bin.js
+  checksum: 10c0/4eef73d406c6940927479a3a9dee551e14a54faf54b31ef861250ac815172bade86cc6f7d64a4dc5e98b65e4b18a2e1c9ff3b68d296be0c748413f092bb0dd40
+  languageName: node
+  linkType: hard
+
 "rimraf@npm:^3.0.2":
   version: 3.0.2
   resolution: "rimraf@npm:3.0.2"
@@ -10267,6 +10379,13 @@ __metadata:
   version: 1.0.3
   resolution: "sprintf-js@npm:1.0.3"
   checksum: 10c0/ecadcfe4c771890140da5023d43e190b7566d9cf8b2d238600f31bec0fc653f328da4450eb04bd59a431771a8e9cc0e118f0aa3974b683a4981b4e07abc2a5bb
+  languageName: node
+  linkType: hard
+
+"ssim.js@npm:^3.1.1":
+  version: 3.5.0
+  resolution: "ssim.js@npm:3.5.0"
+  checksum: 10c0/9e7101da17395d3acbd417aac712d8f156522e79059a27cb38882eedd5a8868e31871c8f58bec3a150f8cf0660883cf22310cbd2fd63b408c1fd0ab02fda9fbc
   languageName: node
   linkType: hard
 
