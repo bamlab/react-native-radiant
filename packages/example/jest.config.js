@@ -16,6 +16,7 @@ const config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   modulePaths: ['<rootDir>'],
   testRegex: '\\.test\\.[jt]sx?$',
+  setupFilesAfterEnv: ['./testing/jest-setupAfterEnv.ts'],
   // module transformation
   transformIgnorePatterns: [`node_modules/(?!(${packagesToTransform.join('|')})/)`],
   cacheDirectory: '.cache/jest',
