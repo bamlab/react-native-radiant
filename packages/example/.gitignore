@@ -34,9 +34,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-app-example
-
-
-# jest
-.cache
