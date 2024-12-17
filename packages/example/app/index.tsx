@@ -1,14 +1,13 @@
-import { Link } from 'expo-router';
-import { Text, View } from 'react-native';
+import { ScrollView } from 'react-native';
+import HomeMenuItem from '../components/HomeMenuItem/HomeMenuItem';
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-      <Link href="/exampleScreens/Text">
-        <Text>Test</Text>
-      </Link>
-    </View>
+    <ScrollView>
+      <HomeMenuItem title="Test" link="/exampleScreens/Text" />
+      <HomeMenuItem title="Test" link="/exampleScreens/Text" />
+      <HomeMenuItem title="Test" link="/exampleScreens/Text" />
+    </ScrollView>
   );
 };
 
