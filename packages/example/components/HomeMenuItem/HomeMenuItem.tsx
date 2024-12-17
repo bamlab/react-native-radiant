@@ -1,6 +1,6 @@
-import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useRouter } from 'expo-router';
 
 interface HomeMenuItemProps {
   title: string;
@@ -8,6 +8,8 @@ interface HomeMenuItemProps {
 }
 
 const HomeMenuItem = ({ title, link }: HomeMenuItemProps) => {
+  const router = useRouter();
+
   const onPress = () => {
     router.navigate(link);
   };
