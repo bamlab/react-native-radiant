@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextExample should render the TextExample component correctly 1`] = `
+<Text>
+  This is a text
+</Text>
+`;
