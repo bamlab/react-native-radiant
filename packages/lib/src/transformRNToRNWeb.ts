@@ -7,7 +7,12 @@ export const transformRNToRNWeb = (
   if (jsonTree === null) return null;
 
   if (Array.isArray(jsonTree)) {
-    return jsonTree.map(transformRNToRNWeb);
+    return jsonTree.map((node, index) => {
+      const transformedNode = transformRNToRNWeb(node);
+      return React.isValidElement(transformedNode)
+        ? React.cloneElement(transformedNode, { key: index })
+        : transformedNode;
+    });
   }
 
   if (typeof jsonTree === 'string') {
