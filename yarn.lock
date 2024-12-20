@@ -7338,32 +7338,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kin-monorepo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "kin-monorepo@workspace:."
-  languageName: unknown
-  linkType: soft
-
-"kin@workspace:packages/lib":
-  version: 0.0.0-use.local
-  resolution: "kin@workspace:packages/lib"
-  dependencies:
-    "@testing-library/react-native": "npm:^12.8.1"
-    "@types/react-dom": "npm:^18.3.1"
-    "@types/react-native-web": "npm:^0.19.0"
-    "@types/react-test-renderer": "npm:^18.3.0"
-    puppeteer: "npm:^23.9.0"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-native: "npm:^0.76.2"
-    react-native-web: "npm:^0.19.13"
-    react-test-renderer: "npm:^18.3.1"
-    ts-node: "npm:^10.9.2"
-    tsup: "npm:^8.3.5"
-    typescript: "npm:^5.6.3"
-  languageName: unknown
-  linkType: soft
-
 "kind-of@npm:^6.0.2":
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
@@ -9261,6 +9235,47 @@ __metadata:
   checksum: 10c0/5690e521e8310d21643634a8d0dacd524e19b76695f347b26f649fcac156a7a901fd6daef7f78482381a41e8445f4552f40ade13790fdf112fab15b0f54dbabd
   languageName: node
   linkType: hard
+
+"react-native-radiant-monorepo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-native-radiant-monorepo@workspace:."
+  languageName: unknown
+  linkType: soft
+
+"react-native-radiant@portal:./../lib::locator=react-native-radiant%40workspace%3Apackages%2Flib":
+  version: 0.0.0-use.local
+  resolution: "react-native-radiant@portal:./../lib::locator=react-native-radiant%40workspace%3Apackages%2Flib"
+  dependencies:
+    "@testing-library/react-native": "npm:^12.8.1"
+    puppeteer: "npm:^23.9.0"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    react-native: "npm:^0.76.2"
+    react-native-web: "npm:^0.19.13"
+    react-test-renderer: "npm:^18.3.1"
+  languageName: node
+  linkType: soft
+
+"react-native-radiant@workspace:packages/lib":
+  version: 0.0.0-use.local
+  resolution: "react-native-radiant@workspace:packages/lib"
+  dependencies:
+    "@testing-library/react-native": "npm:^12.8.1"
+    "@types/react-dom": "npm:^18.3.1"
+    "@types/react-native-web": "npm:^0.19.0"
+    "@types/react-test-renderer": "npm:^18.3.0"
+    puppeteer: "npm:^23.9.0"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    react-native: "npm:^0.76.2"
+    react-native-radiant: "portal:./../lib"
+    react-native-web: "npm:^0.19.13"
+    react-test-renderer: "npm:^18.3.1"
+    ts-node: "npm:^10.9.2"
+    tsup: "npm:^8.3.5"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
 
 "react-native-safe-area-context@npm:4.12.0":
   version: 4.12.0

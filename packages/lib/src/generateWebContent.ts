@@ -19,7 +19,7 @@ export const generateWebContent = (renderedComponent: RenderResult) => {
         ${pageStyle}
       </style>
     </head>
-    <body style="height: 100vh; background-color:green; display:flex">
+    <body style="height: 100vh; display:flex">
       ${pageBody}
     </body>
     </html>
