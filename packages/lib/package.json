@@ -1,5 +1,5 @@
 {
-  "name": "kin",
+  "name": "react-native-radiant",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

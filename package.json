@@ -1,5 +1,5 @@
 {
-  "name": "kin-monorepo",
+  "name": "react-native-radiant-monorepo",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -12,7 +12,7 @@
   "scripts": {
     "start:example": "yarn workspace example start",
     "test:example": "yarn workspace example test",
-    "build:core": "yarn workspace kin build",
+    "build:core": "yarn workspace react-native-radiant build",
     "types": "yarn workspaces foreach run types"
   },
   "packageManager": "yarn@4.5.3"
