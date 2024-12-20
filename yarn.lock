@@ -9242,20 +9242,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"react-native-radiant@portal:./../lib::locator=react-native-radiant%40workspace%3Apackages%2Flib":
-  version: 0.0.0-use.local
-  resolution: "react-native-radiant@portal:./../lib::locator=react-native-radiant%40workspace%3Apackages%2Flib"
-  dependencies:
-    "@testing-library/react-native": "npm:^12.8.1"
-    puppeteer: "npm:^23.9.0"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-native: "npm:^0.76.2"
-    react-native-web: "npm:^0.19.13"
-    react-test-renderer: "npm:^18.3.1"
-  languageName: node
-  linkType: soft
-
 "react-native-radiant@workspace:packages/lib":
   version: 0.0.0-use.local
   resolution: "react-native-radiant@workspace:packages/lib"
@@ -9268,7 +9254,6 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-native: "npm:^0.76.2"
-    react-native-radiant: "portal:./../lib"
     react-native-web: "npm:^0.19.13"
     react-test-renderer: "npm:^18.3.1"
     ts-node: "npm:^10.9.2"
