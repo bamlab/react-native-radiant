@@ -5078,10 +5078,10 @@ __metadata:
     "@types/jest": "npm:^29.5.14"
     "@types/jest-image-snapshot": "npm:^6"
     "@types/react": "npm:~18.3.12"
-    expo: "npm:~52.0.19"
+    expo: "npm:^52.0.21"
     expo-constants: "npm:~17.0.3"
     expo-linking: "npm:~7.0.3"
-    expo-router: "npm:~4.0.13"
+    expo-router: "npm:~4.0.14"
     expo-status-bar: "npm:~2.0.0"
     jest: "npm:^29.7.0"
     jest-expo: "npm:^52.0.2"
@@ -5256,9 +5256,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:~4.0.13":
-  version: 4.0.15
-  resolution: "expo-router@npm:4.0.15"
+"expo-router@npm:~4.0.14":
+  version: 4.0.14
+  resolution: "expo-router@npm:4.0.14"
   dependencies:
     "@expo/metro-runtime": "npm:4.0.0"
     "@expo/server": "npm:^0.5.0"
@@ -5288,7 +5288,7 @@ __metadata:
       optional: true
     react-native-reanimated:
       optional: true
-  checksum: 10c0/3498a533b522a8f07e6d5128024052a3e3ae5670fd795b78fe1df46b2e0e4443bcb2a3c910cd4f920e6d480bd71275153b21400c15b6414cb659b23781296baf
+  checksum: 10c0/53cf98e10a0d723100c4c9d574edc7b63bc821dff463d3c06141d5fbf2e2cef845567df8dffa0d17cbe846efd1f7497c2e09518fa6070c6a1aa7ca769a05ae88
   languageName: node
   linkType: hard
 
@@ -5302,9 +5302,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:~52.0.19":
-  version: 52.0.23
-  resolution: "expo@npm:52.0.23"
+"expo@npm:^52.0.21":
+  version: 52.0.21
+  resolution: "expo@npm:52.0.21"
   dependencies:
     "@babel/runtime": "npm:^7.20.0"
     "@expo/cli": "npm:0.22.7"
@@ -5339,7 +5339,7 @@ __metadata:
       optional: true
   bin:
     expo: bin/cli
-  checksum: 10c0/0847a5eb4957bd1e060d4712cf5efdd69307ee86fafa3ea082779d8a38c3e82547571447e1f57ee05c2e779072d9f6b0880f6cf14a2011d46202ebf72ea95295
+  checksum: 10c0/51414e477935a5f1543e64653ef11e929641e52bc144d7490915865061e7a76fc62f4df27d4404d13fa2b76cf2cebd08280eb3eee1951f8cc3cadaadac9d028b
   languageName: node
   linkType: hard
 
