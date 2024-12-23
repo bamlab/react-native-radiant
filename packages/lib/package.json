@@ -10,21 +10,27 @@
     "types": "tsc"
   },
   "dependencies": {
+    "puppeteer": "^23.9.0"
+  },
+  "devDependencies": {
     "@testing-library/react-native": "^12.8.1",
-    "puppeteer": "^23.9.0",
+    "@types/react-dom": "^18.3.1",
+    "@types/react-native-web": "^0.19.0",
+    "@types/react-test-renderer": "^18.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-native": "^0.76.2",
     "react-native-web": "^0.19.13",
-    "react-test-renderer": "^18.3.1"
-  },
-  "devDependencies": {
-    "@types/react-dom": "^18.3.1",
-    "@types/react-native-web": "^0.19.0",
-    "@types/react-test-renderer": "^18.3.0",
+    "react-test-renderer": "^18.3.1",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "@testing-library/react-native": "^11.0.0 || ^12.0.0",
+    "react": "*",
+    "react-native": "*",
+    "react-native-web": "*"
   },
   "packageManager": "yarn@4.3.1+sha256.2535167e742927e1d2a1610d5004576e4e8f764d2ca5470d19536790f55cd6e2"
 }
