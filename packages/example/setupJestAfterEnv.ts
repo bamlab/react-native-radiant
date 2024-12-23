@@ -21,5 +21,14 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot(
         failureThresholdType: 'percent',
       },
 );
-installInterceptor();
+
+installInterceptor({
+  onUnhandled: (req) => {
+    if (req.url.includes('127.0.0.1')) {
+      return undefined;
+    } else {
+      throw new Error(`Unhandled request: ${req.url}`);
+    }
+  },
+});
 expect.extend({ toMatchImageSnapshot });
