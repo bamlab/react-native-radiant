@@ -4,12 +4,6 @@
 
 It is based on [react-native-web](https://github.com/necolas/react-native-web) and [puppeteer](https://github.com/puppeteer/puppeteer).
 
-This is what a simple test component snapshot looks like:
-
-<div style="display: flex; justify-content: center;">
-<img src="./docs/readme-example-snapshot.png" alt="Simple text snapshot" width="250"/>
-</div>
-
 ## Installation
 
 This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
