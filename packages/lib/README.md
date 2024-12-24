@@ -2,13 +2,29 @@
 
 @bam.tech/react-native-radiant is a React Native library to test your components using visual snapshots of your components.
 
-It is based on react-native-web and puppeteer.
+It is based on [react-native-web](https://github.com/necolas/react-native-web) and [puppeteer](https://github.com/puppeteer/puppeteer).
+
+This is what a simple test component snapshot looks like:
+
+<div style="display: flex; justify-content: center;">
+<img src="./docs/readme-example-snapshot.png" alt="Simple text snapshot" width="250"/>
+</div>
 
 ## Installation
 
+This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
+
+```bash
+yarn add --dev @testing-library/react-native react-native-web
+```
+
+Then you can install `@bam.tech/react-native-radiant`:
+
+````
+
 ```bash
 yarn add --dev @bam.tech/react-native-radiant
-```
+````
 
 ## Setup
 
@@ -36,7 +52,7 @@ configure({
 });
 ```
 
-## Usage
+## Example of usage with `jest-image-snapshot`
 
 This is what a ray (a visual snapshot of a component) test looks like:
 
