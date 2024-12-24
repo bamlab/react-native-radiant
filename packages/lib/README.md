@@ -14,11 +14,9 @@ yarn add --dev @testing-library/react-native react-native-web
 
 Then you can install `@bam.tech/react-native-radiant`:
 
-````
-
 ```bash
 yarn add --dev @bam.tech/react-native-radiant
-````
+```
 
 ## Setup
 
