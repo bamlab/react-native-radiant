@@ -4,7 +4,7 @@ type Font = {
 };
 
 type ConfigureOptions = {
-  fonts: Font[];
+  fonts?: Font[];
 };
 
 const globalFonts: Font[] = [];

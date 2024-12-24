@@ -1,7 +1,7 @@
 import ReactDOMServer from 'react-dom/server';
 import { transformRNToRNWeb } from './transformRNToRNWeb';
 import { RenderResult } from '@testing-library/react-native';
-import { getFontsHTML } from './config/fonts';
+import { getFontsHTML } from './modules/fonts';
 
 export const generateWebContent = (renderedComponent: RenderResult) => {
   const pageBody = ReactDOMServer.renderToString(transformRNToRNWeb(renderedComponent.toJSON()));
