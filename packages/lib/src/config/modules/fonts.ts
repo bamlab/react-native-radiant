@@ -1,4 +1,4 @@
-import { globalFonts } from './configure';
+import { globalFonts } from '../configure';
 import fs from 'fs';
 
 const convertFontToDataURI = (fontPath: string) => {

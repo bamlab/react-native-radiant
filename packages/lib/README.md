@@ -48,15 +48,15 @@ configure({
 
 ## Example of usage with `jest-image-snapshot`
 
-This is what a ray (a visual snapshot of a component) test looks like:
+This is what a visual snapshot test looks like:
 
 ```javascript
-it('should match ray snapshot', async () => {
+it('should match visual snapshot', async () => {
   const renderedComponent = render(<MyComponent />);
 
-  const ray = await renderComponentToWebScreenshot({ renderedComponent });
+  const visualSnapshot = await getVisualSnapshot(renderedComponent);
 
-  expect(ray).toMatchImageSnapshot();
+  expect(visualSnapshot).toMatchImageSnapshot();
 });
 ```
 

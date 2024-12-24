@@ -1,25 +1,23 @@
 import { configure, globalFonts } from './config/configure';
-import { generateVisualSnapshot } from './generateVisualSnapshot';
-import { generateWebContent } from './generateWebContent';
+import { generateVisualSnapshotFromHTML } from './snapshot/generateVisualSnapshotFromHTML';
+import { generateWebContent } from './snapshot/generateWebContent';
 import { RenderResult } from '@testing-library/react-native';
 
-interface RenderComponentToWebScreenshotParams {
-  renderedComponent: RenderResult;
-  height?: number;
-  width?: number;
+interface GetVisualSnapshotOptions {
+  height: number;
+  width: number;
 }
 
-export const renderComponentToWebScreenshot = async ({
-  renderedComponent,
-  height = 800,
-  width = 400,
-}: RenderComponentToWebScreenshotParams) => {
-  const pageContent = generateWebContent(renderedComponent);
+export const getVisualSnapshot = async (
+  renderedComponent: RenderResult,
+  options: GetVisualSnapshotOptions = { height: 800, width: 400 },
+) => {
+  const htmlContent = generateWebContent(renderedComponent);
 
-  return await generateVisualSnapshot({
-    height: height,
-    width: width,
-    pageContent,
+  return await generateVisualSnapshotFromHTML({
+    height: options.height,
+    width: options.width,
+    htmlContent,
   });
 };
 

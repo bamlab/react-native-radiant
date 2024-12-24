@@ -3,13 +3,13 @@ import puppeteer from 'puppeteer';
 interface generateVisualSnapshotParams {
   height: number;
   width: number;
-  pageContent: string;
+  htmlContent: string;
 }
 
-export const generateVisualSnapshot = async ({
+export const generateVisualSnapshotFromHTML = async ({
   height,
   width,
-  pageContent,
+  htmlContent,
 }: generateVisualSnapshotParams) => {
   const browser = await puppeteer.launch({
     headless: true,
@@ -21,7 +21,7 @@ export const generateVisualSnapshot = async ({
 
   const page = await browser.newPage();
 
-  await page.setContent(pageContent);
+  await page.setContent(htmlContent);
 
   const image = await page.screenshot({
     encoding: 'base64',
