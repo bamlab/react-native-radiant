@@ -58,4 +58,4 @@ jobs:
         run: yarn test:lib
 
       - name: Jest in example app
-        run: yarn test:jest:ci --maxWorkers=2
+        run: yarn test:example:ci --maxWorkers=2
