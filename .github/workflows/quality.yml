@@ -51,6 +51,9 @@ jobs:
             ${{ runner.os }}-quality-${{ github.ref_name }}
             ${{ runner.os }}-quality-
 
+      - name: Install Chrome
+        run: npx puppeteer browsers install chrome
+
       - name: TypeScript in lib
         run: yarn test:lib
 
