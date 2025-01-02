@@ -16,6 +16,8 @@
   ],
   "devDependencies": {
     "@testing-library/react-native": "^12.8.1",
+    "@types/node": "*",
+    "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@types/react-native-web": "^0.19.0",
     "@types/react-test-renderer": "^18.3.0",
