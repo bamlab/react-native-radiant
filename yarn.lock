@@ -5165,6 +5165,7 @@ __metadata:
     jest-image-snapshot: "npm:^6.4.0"
     react: "npm:18.3.1"
     react-native: "npm:0.76.5"
+    react-native-radiant: "portal:../lib"
     react-native-safe-area-context: "npm:4.12.0"
     react-native-screens: "npm:~4.4.0"
     typescript: "npm:^5.3.3"
@@ -9265,6 +9266,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-native-radiant-monorepo@workspace:."
   languageName: unknown
+  linkType: soft
+
+"react-native-radiant@portal:../lib::locator=example%40workspace%3Apackages%2Fexample":
+  version: 0.0.0-use.local
+  resolution: "react-native-radiant@portal:../lib::locator=example%40workspace%3Apackages%2Fexample"
+  dependencies:
+    puppeteer: "npm:^23.9.0"
+  peerDependencies:
+    "@testing-library/react-native": ^11.0.0 || ^12.0.0
+    react: "*"
+    react-native: "*"
+    react-native-web: "*"
+  languageName: node
   linkType: soft
 
 "react-native-safe-area-context@npm:4.12.0":

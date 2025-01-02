@@ -1,0 +1,58 @@
+name: Quality
+
+on:
+  - push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-job:
+    name: Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        id: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Load dependency cache
+        uses: actions/cache@v3
+        with:
+          # .yarn/cache: speed up fetch step
+          # .yarn/install-state.gz + node_modules: speed up link step and resolution step
+          path: |
+            **/node_modules
+            .yarn/cache
+            .yarn/install-state.gz
+          key: ${{ runner.os }}-node-${{ steps.setup-node.outputs.node-version }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ steps.setup-node.outputs.node-version }}-modules-
+
+      - name: Install dependencies
+        run: yarn --immutable
+        env:
+          YARN_ENABLE_MIRROR: 'false' # Prevent populating global cache for caches misses (local cache only)
+
+      - name: Load testing cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .cache
+          key: ${{ runner.os }}-quality-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-quality-${{ github.ref_name }}
+            ${{ runner.os }}-quality-
+
+      - name: TypeScript in lib
+        run: yarn test:lib
+
+      - name: Jest in example app
+        run: yarn test:jest:ci --maxWorkers=2
