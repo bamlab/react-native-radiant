@@ -1,14 +1,14 @@
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const RNSafeAreaContextExample = () => {
   return (
-    <SafeAreaProvider>
+    <View>
       <Text>This is a text</Text>
       <Text>This is another text</Text>
       <Text>This is the last text</Text>
-    </SafeAreaProvider>
+    </View>
   );
 };
 
