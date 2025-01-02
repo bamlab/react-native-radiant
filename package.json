@@ -9,6 +9,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "resolutions": {
+    "@types/react": "^18.0.0"
+  },
   "scripts": {
     "start:example": "yarn workspace example start",
     "test:example": "yarn workspace example test",
