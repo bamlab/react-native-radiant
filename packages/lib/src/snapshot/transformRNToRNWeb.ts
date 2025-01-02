@@ -19,8 +19,17 @@ export const transformRNToRNWeb = (
     return jsonTree;
   }
 
-  var nodeType = jsonTree.type.replace('RCT', '');
-  var RNWebEl = require('react-native-web')[nodeType];
+  const nodeType = jsonTree.type.replace('RCT', '');
+  const RNWebEl = require('react-native-web')[nodeType];
+  const RNWebElFallback = require('react-native-web')['View'];
 
-  return React.createElement(RNWebEl, jsonTree.props, transformRNToRNWeb(jsonTree.children));
+  if (RNWebEl === undefined) {
+    console.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
+  }
+
+  return React.createElement(
+    RNWebEl ?? RNWebElFallback,
+    jsonTree.props,
+    transformRNToRNWeb(jsonTree.children),
+  );
 };
