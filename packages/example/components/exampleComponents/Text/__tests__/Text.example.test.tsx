@@ -8,5 +8,5 @@ describe('TextExample', () => {
     const renderedComponent = render(<TextExample />);
 
     expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
-  }, 100000);
+  });
 });
