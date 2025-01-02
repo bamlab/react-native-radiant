@@ -37,7 +37,7 @@ jobs:
             ${{ runner.os }}-node-${{ steps.setup-node.outputs.node-version }}-modules-
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: corepack enable && yarn --immutable
         env:
           YARN_ENABLE_MIRROR: 'false' # Prevent populating global cache for caches misses (local cache only)
 
