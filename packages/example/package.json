@@ -28,11 +28,9 @@
     "@types/jest": "^29.5.14",
     "@types/jest-image-snapshot": "^6",
     "@types/react": "~18.3.12",
-    "@types/react-test-renderer": "^19",
     "jest": "^29.7.0",
     "jest-expo": "^52.0.2",
     "jest-image-snapshot": "^6.4.0",
-    "react-test-renderer": "^18.0.0",
     "typescript": "^5.3.3"
   },
   "private": true,
