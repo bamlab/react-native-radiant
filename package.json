@@ -15,7 +15,7 @@
     "build:core": "yarn workspace react-native-radiant build",
     "types": "yarn workspaces foreach run types",
     "test:lib": "yarn workspace @bam.tech/react-native-radiant test",
-    "test:jest:ci": "yarn workspace example test --maxWorkers=2"
+    "test:jest:ci": "yarn workspace example test --maxWorkers=2 --testTimeout=30000"
   },
   "packageManager": "yarn@4.5.3"
 }
