@@ -1,4 +1,4 @@
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, StyleSheet, View } from 'react-native';
 
 const ButtonExample = () => {
   return (
