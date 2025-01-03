@@ -7,6 +7,7 @@ const Home = () => {
       <HomeMenuItem title="Test" link="/exampleScreens/Text" />
       <HomeMenuItem title="Test" link="/exampleScreens/Text" />
       <HomeMenuItem title="Test" link="/exampleScreens/Text" />
+      <HomeMenuItem title="RNSafeAreaContext" link="/exampleScreens/RNSafeAreaContext" />
     </ScrollView>
   );
 };
