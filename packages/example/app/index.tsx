@@ -1,5 +1,5 @@
 import { ScrollView } from 'react-native';
-import HomeMenuItem from '../components/HomeMenuItem/HomeMenuItem';
+import HomeMenuItem from '@components/HomeMenuItem/HomeMenuItem';
 
 const Home = () => {
   return (
