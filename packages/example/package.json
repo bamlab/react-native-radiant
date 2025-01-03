@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@bam.tech/react-native-radiant": "workspace:^",
     "@expo/vector-icons": "^14.0.4",
     "expo": "~52.0.19",
     "expo-constants": "~17.0.3",
@@ -24,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@bam.tech/react-native-radiant": "workspace:^",
     "@testing-library/react-native": "^12.9.0",
     "@types/jest": "^29.5.14",
     "@types/jest-image-snapshot": "^6",
