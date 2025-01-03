@@ -9,4 +9,17 @@ jest.mock('expo-font', () => {
   return module;
 });
 
-configure({ fonts: [] });
+configure({
+  fonts: [
+    {
+      fontFamily: 'Entypo',
+      fontPath:
+        '../../node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Entypo.ttf',
+    },
+    {
+      fontFamily: 'Ionicons',
+      fontPath:
+        '../../node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf',
+    },
+  ],
+});
