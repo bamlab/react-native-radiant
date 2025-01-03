@@ -9,7 +9,7 @@ jest.mock(
   () => require('react-native-safe-area-context/jest/mock').default,
 );
 
-describe('TextExample', () => {
+describe('RNSafeAreaContext', () => {
   it('should match image snapshot', async () => {
     const renderedComponent = render(
       <SafeAreaProvider>
