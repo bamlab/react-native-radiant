@@ -14,6 +14,7 @@ export const generateWebContent = (renderedComponent: RenderResult) => {
     <!DOCTYPE html>
     <html lang="en">
     <head>
+    <meta charset="UTF-8">
         ${fontsHTML}
       <style>
         ${pageStyle}
