@@ -1,4 +1,4 @@
-import ExpoVectorIconsExample from '../../../components/exampleComponents/ExpoVectorIcons/ExpoVectorIcons';
+import ExpoVectorIconsExample from '@components/exampleComponents/ExpoVectorIcons/ExpoVectorIcons';
 
 const ExpoVectorIcons = () => {
   return <ExpoVectorIconsExample />;
