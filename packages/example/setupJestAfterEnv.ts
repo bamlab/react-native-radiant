@@ -1,8 +1,24 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
-const toMatchImageSnapshot = configureToMatchImageSnapshot({
-  failureThreshold: 0.01,
-  failureThresholdType: 'percent',
-});
+/*
+  Snapshot tolerance level was introduced to set different tolerance levels between local and CI environments.
+  This is useful when you want to have a higher tolerance level in CI to avoid flaky tests.
+*/
+
+const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ? 'HIGH' : 'LOW'; // default to low tolerance level
+
+const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
+
+const toMatchImageSnapshot = configureToMatchImageSnapshot(
+  isSnapshotToleranceLow
+    ? {
+        failureThreshold: 16,
+        failureThresholdType: 'pixel',
+      }
+    : {
+        failureThreshold: 0.01,
+        failureThresholdType: 'percent',
+      },
+);
 
 expect.extend({ toMatchImageSnapshot });
