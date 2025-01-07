@@ -1,5 +1,10 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
+/*
+  Snapshot tolerance level was introduced to set different tolerance levels between local and CI environments.
+  This is useful when you want to have a higher tolerance level in CI to avoid flaky tests.
+*/
+
 const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ? 'HIGH' : 'LOW'; // default to low tolerance level
 
 const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
