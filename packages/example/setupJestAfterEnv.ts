@@ -1,6 +1,6 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
-const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL == 'HIGH' ? 'HIGH' : 'LOW'; // default to low tolerance level
+const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ? 'HIGH' : 'LOW'; // default to low tolerance level
 
 const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
 
