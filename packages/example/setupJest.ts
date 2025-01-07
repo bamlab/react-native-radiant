@@ -32,7 +32,7 @@ configure({
         '../../node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf',
     },
     {
-      fontFamily: 'MaterialIcons',
+      fontFamily: 'material',
       fontPath:
         '../../node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf',
     },
