@@ -1,4 +1,4 @@
-import RNSafeAreaContext from '../../../components/exampleComponents/RNSafeAreaContext/RNSafeAreaContext.example';
+import RNSafeAreaContext from '@components/exampleComponents/RNSafeAreaContext/RNSafeAreaContext.example';
 
 const ExampleRNSafeAreaContext = () => {
   return <RNSafeAreaContext />;

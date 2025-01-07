@@ -1,4 +1,4 @@
-import Text from '../../../components/exampleComponents/Text/Text.example';
+import Text from '@components/exampleComponents/Text/Text.example';
 
 const ExampleText = () => {
   return <Text />;
