@@ -4,6 +4,13 @@ z# @bam.tech/react-native-radiant
 
 It is based on [react-native-web](https://github.com/necolas/react-native-web) and [puppeteer](https://github.com/puppeteer/puppeteer).
 
+## Contents
+
+- [Installation](#installation)
+- [Setup](#setup)
+- [Example of usage with `jest-image-snapshot`](#example-of-usage-with-jest-image-snapshot)
+- [License](#license)
+
 ## Installation
 
 This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
