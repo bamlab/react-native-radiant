@@ -4,6 +4,13 @@
 
 It is based on [react-native-web](https://github.com/necolas/react-native-web) and [puppeteer](https://github.com/puppeteer/puppeteer).
 
+## Contents
+
+- [Installation](#installation)
+- [Setup](#setup)
+- [Example of usage with `jest-image-snapshot`](#example-of-usage-with-jest-image-snapshot)
+- [License](#license)
+
 ## Installation
 
 This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
@@ -61,6 +68,49 @@ it('should match visual snapshot', async () => {
 Then run `yarn jest` to generate the snapshots.
 
 The snapshots should be stored in the `__image_snapshots__` folder in your Jest test folder.
+
+### Threshold
+
+You can set a threshold for the visual snapshots using jest-image-snapshot options, in your Jest setup after env file:
+
+```javascript
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  failureThreshold: 0.01,
+  failureThresholdType: 'percent',
+});
+
+expect.extend({ toMatchImageSnapshot });
+```
+
+If you need to set a different threshold in different environments (local vs CI for example), you can use environment variables to do so:
+
+```javascript
+const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ? 'HIGH' : 'LOW'; // default to low tolerance level
+
+const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
+
+const toMatchImageSnapshot = configureToMatchImageSnapshot(
+  isSnapshotToleranceLow
+    ? {
+        failureThreshold: 16,
+        failureThresholdType: 'pixel',
+      }
+    : {
+        failureThreshold: 0.01,
+        failureThresholdType: 'percent',
+      },
+);
+
+expect.extend({ toMatchImageSnapshot });
+```
+
+Then you can run your tests with the `SNAPSHOT_TOLERANCE_LEVEL` environment variable set to `HIGH` or `LOW` to change the threshold:
+
+```bash
+SNAPSHOT_TOLERANCE_LEVEL=HIGH yarn jest
+```
+
+See [full documentation](https://github.com/americanexpress/jest-image-snapshot) of `jest-image-snapshot` for more details.
 
 ## License
 
