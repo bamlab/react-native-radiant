@@ -1,4 +1,4 @@
-z# @bam.tech/react-native-radiant
+# @bam.tech/react-native-radiant
 
 @bam.tech/react-native-radiant is a React Native library to test your components using visual snapshots of your components.
 
