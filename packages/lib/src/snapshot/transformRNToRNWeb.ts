@@ -1,7 +1,6 @@
 import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
-import path from 'path';
-import { imageToDataURI } from './modules/image';
+import { convertImageSource } from './modules/image';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -32,17 +31,7 @@ export const transformRNToRNWeb = (
   let newJsonTreeProps = jsonTree.props;
 
   if (jsonTree.type === 'Image') {
-    const imageRelativePath: string = jsonTree.props.source.testUri;
-
-    const reactNativeAssetFileTransformerPath = path.dirname(
-      require.resolve('react-native/jest/assetFileTransformer'),
-    );
-
-    const imagePath = path.resolve(reactNativeAssetFileTransformerPath, imageRelativePath);
-
-    const imageAsDataURI = imageToDataURI(imagePath);
-
-    newJsonTreeProps.source = imageAsDataURI;
+    newJsonTreeProps.source = convertImageSource(jsonTree.props.source.testUri);
   }
 
   return React.createElement(
