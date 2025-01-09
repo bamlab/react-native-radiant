@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
 import fs from 'fs';
 import path from 'path';
+import { imageToDataURI } from './modules/image';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -40,17 +41,9 @@ export const transformRNToRNWeb = (
 
     const imagePath = path.resolve(reactNativeAssetFileTransformerPath, imageRelativePath);
 
-    const imageData = fs.readFileSync(imagePath, { encoding: 'base64' });
-    const ext = imagePath.split('.').pop()?.toLowerCase() || 'png';
-    const mimeType =
-      ext === 'png'
-        ? 'image/png'
-        : ext === 'jpg' || ext === 'jpeg'
-        ? 'image/jpeg'
-        : ext === 'gif'
-        ? 'image/gif'
-        : 'application/octet-stream';
-    newJsonTreeProps.source = `data:${mimeType};base64,${imageData}`;
+    const imageAsDataURI = imageToDataURI(imagePath);
+
+    newJsonTreeProps.source = imageAsDataURI;
   }
 
   return React.createElement(
