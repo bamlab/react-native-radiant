@@ -1,6 +1,5 @@
 import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
-import fs from 'fs';
 import path from 'path';
 import { imageToDataURI } from './modules/image';
 
