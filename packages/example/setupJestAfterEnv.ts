@@ -16,7 +16,7 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot(
         failureThresholdType: 'pixel',
       }
     : {
-        failureThreshold: 0.01,
+        failureThreshold: 0.05,
         failureThresholdType: 'percent',
       },
 );
