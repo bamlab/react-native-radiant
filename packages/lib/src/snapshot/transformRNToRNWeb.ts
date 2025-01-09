@@ -32,7 +32,7 @@ export const transformRNToRNWeb = (
   let newJsonTreeProps = jsonTree.props;
 
   if (jsonTree.type === 'Image') {
-    let imageRelativePath: string = jsonTree.props.source.testUri;
+    const imageRelativePath: string = jsonTree.props.source.testUri;
 
     const reactNativeAssetFileTransformerPath = path.dirname(
       require.resolve('react-native/jest/assetFileTransformer'),
