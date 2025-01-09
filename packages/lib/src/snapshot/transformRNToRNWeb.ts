@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
-import { convertImageSource } from './modules/image';
+import { convertImageSource, ImageSourceProp } from './modules/image';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -31,7 +31,7 @@ export const transformRNToRNWeb = (
   let newJsonTreeProps = jsonTree.props;
 
   if (jsonTree.type === 'Image') {
-    newJsonTreeProps.source = convertImageSource(jsonTree.props.source.testUri);
+    newJsonTreeProps.source = convertImageSource(jsonTree.props as ImageSourceProp);
   }
 
   return React.createElement(

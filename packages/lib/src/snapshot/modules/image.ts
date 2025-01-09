@@ -1,6 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 
+type ImageSourceProp =
+  | {
+      source:
+        | {
+            testUri: string;
+          }
+        | {
+            uri: string;
+          };
+    }
+  | {
+      src: string;
+    };
+
 const imageToDataURI = (imagePath: string): string => {
   const imageData = fs.readFileSync(imagePath, { encoding: 'base64' });
   const fileExtension = imagePath.split('.').pop()?.toLowerCase();
@@ -31,7 +45,24 @@ const imageToDataURI = (imagePath: string): string => {
   return `data:${mimeType};base64,${imageData}`;
 };
 
-const convertImageSource = (imageUri: string): string => {
+const convertImageSource = (imageSource: ImageSourceProp): string => {
+  if ('src' in imageSource) {
+    // src prop is used => image is remote URL
+    console.warn('Remote images are not supported');
+    return '';
+  }
+
+  let imageUri: string;
+
+  if ('uri' in imageSource.source) {
+    imageUri = imageSource.source.uri;
+  } else if ('testUri' in imageSource.source) {
+    imageUri = imageSource.source.testUri;
+  } else {
+    console.warn('No image URI found');
+    return '';
+  }
+
   if (imageUri.startsWith('data:')) {
     return imageUri;
   }
@@ -54,4 +85,4 @@ const convertImageSource = (imageUri: string): string => {
   return imageAsDataURI;
 };
 
-export { convertImageSource, imageToDataURI };
+export { convertImageSource, imageToDataURI, ImageSourceProp };
