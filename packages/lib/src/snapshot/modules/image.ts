@@ -15,6 +15,23 @@ type ImageSourceProp =
       src: string;
     };
 
+type ImageData =
+  | {
+      type: 'local';
+      imagePath: string;
+    }
+  | {
+      type: 'data-uri';
+      dataURI: string;
+    }
+  | {
+      type: 'remote';
+      url: string;
+    }
+  | {
+      type: null;
+    };
+
 const imageToDataURI = (imagePath: string): string => {
   const imageData = fs.readFileSync(imagePath, { encoding: 'base64' });
   const fileExtension = imagePath.split('.').pop()?.toLowerCase();
@@ -45,11 +62,18 @@ const imageToDataURI = (imagePath: string): string => {
   return `data:${mimeType};base64,${imageData}`;
 };
 
-const convertImageSource = (imageSource: ImageSourceProp): string => {
+const resolveImageAbsolutePath = (imageRelativePath: string): string => {
+  const reactNativeAssetFileTransformerPath = path.dirname(
+    require.resolve('react-native/jest/assetFileTransformer'),
+  );
+
+  return path.resolve(reactNativeAssetFileTransformerPath, imageRelativePath);
+};
+
+const extractImageData = (imageSource: ImageSourceProp): ImageData => {
   if ('src' in imageSource) {
     // src prop is used => image is remote URL
-    console.warn('Remote images are not supported');
-    return '';
+    return { type: 'remote', url: imageSource.src };
   }
 
   let imageUri: string;
@@ -59,30 +83,44 @@ const convertImageSource = (imageSource: ImageSourceProp): string => {
   } else if ('testUri' in imageSource.source) {
     imageUri = imageSource.source.testUri;
   } else {
-    console.warn('No image URI found');
-    return '';
+    return { type: null };
   }
 
   if (imageUri.startsWith('data:')) {
-    return imageUri;
+    return { type: 'data-uri', dataURI: imageUri };
   }
 
   if (imageUri.startsWith('http')) {
-    console.warn('Remote images are not supported');
-    return '';
+    return { type: 'remote', url: imageUri };
   }
 
-  const imageRelativePath: string = imageUri;
-
-  const reactNativeAssetFileTransformerPath = path.dirname(
-    require.resolve('react-native/jest/assetFileTransformer'),
-  );
-
-  const imagePath = path.resolve(reactNativeAssetFileTransformerPath, imageRelativePath);
-
-  const imageAsDataURI = imageToDataURI(imagePath);
-
-  return imageAsDataURI;
+  return { type: 'local', imagePath: resolveImageAbsolutePath(imageUri) };
 };
 
-export { convertImageSource, imageToDataURI, ImageSourceProp };
+const transformImageData = (imageData: ImageData): string => {
+  switch (imageData.type) {
+    case 'local':
+      return imageToDataURI(imageData.imagePath);
+    case 'data-uri':
+      return imageData.dataURI;
+    case 'remote':
+      console.warn('Remote images are not supported');
+      return '';
+    case null:
+      console.warn('No image URI found');
+      return '';
+    default:
+      const _exhaustiveCheck: never = imageData;
+      return '';
+  }
+};
+
+const convertImageSource = (imageSource: ImageSourceProp): string => {
+  const imageData = extractImageData(imageSource);
+
+  const imageDataURI = transformImageData(imageData);
+
+  return imageDataURI;
+};
+
+export { convertImageSource, ImageSourceProp };
