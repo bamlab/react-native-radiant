@@ -1,5 +1,7 @@
 import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
+import fs from 'fs';
+import path from 'path';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -27,9 +29,33 @@ export const transformRNToRNWeb = (
     console.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
   }
 
+  let newJsonTreeProps = jsonTree.props;
+
+  if (jsonTree.type === 'Image') {
+    let imageRelativePath: string = jsonTree.props.source.testUri;
+
+    const reactNativeAssetFileTransformerPath = path.dirname(
+      require.resolve('react-native/jest/assetFileTransformer'),
+    );
+
+    const imagePath = path.resolve(reactNativeAssetFileTransformerPath, imageRelativePath);
+
+    const imageData = fs.readFileSync(imagePath, { encoding: 'base64' });
+    const ext = imagePath.split('.').pop()?.toLowerCase() || 'png';
+    const mimeType =
+      ext === 'png'
+        ? 'image/png'
+        : ext === 'jpg' || ext === 'jpeg'
+        ? 'image/jpeg'
+        : ext === 'gif'
+        ? 'image/gif'
+        : 'application/octet-stream';
+    newJsonTreeProps.source = `data:${mimeType};base64,${imageData}`;
+  }
+
   return React.createElement(
     RNWebEl ?? RNWebElFallback,
-    jsonTree.props,
+    newJsonTreeProps,
     transformRNToRNWeb(jsonTree.children),
   );
 };
