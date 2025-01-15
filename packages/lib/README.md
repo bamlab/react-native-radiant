@@ -9,6 +9,9 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
 - [Installation](#installation)
 - [Setup](#setup)
 - [Example of usage with `jest-image-snapshot`](#example-of-usage-with-jest-image-snapshot)
+  - [Threshold](#threshold)
+- [Compatibility with other packages](#compatibility-with-other-packages)
+  - [`@matthieug/shm`](#matthieugshm)
 - [License](#license)
 
 ## Installation
@@ -111,6 +114,30 @@ SNAPSHOT_TOLERANCE_LEVEL=HIGH yarn jest
 ```
 
 See [full documentation](https://github.com/americanexpress/jest-image-snapshot) of `jest-image-snapshot` for more details.
+
+## Compatibility with other packages
+
+### `@matthieug/shm`
+
+`react-native-radiant` is based on puppeteer, which uses a headless browser to render the components, and especially network requests.
+
+`@matthieug/shm` intercepts network requests, which causes `react-native-radiant` screenshot tests to fail.
+
+To fix this, you can add the following configuration to your Jest setup after env file, when installing interceptor, to allow local requests through (including puppeteer requests):
+
+```javascript
+installInterceptor({
+  onUnhandled: (req) => {
+    if (req.url.includes('127.0.0.1')) {
+      return undefined;
+    } else {
+      throw new Error(`Unhandled request: ${req.url}`);
+    }
+  },
+});
+```
+
+> Warning: this fix requires `@matthieug/shm` version 0.7.3 or higher.
 
 ## License
 

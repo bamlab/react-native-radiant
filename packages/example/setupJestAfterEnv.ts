@@ -22,6 +22,8 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot(
       },
 );
 
+expect.extend({ toMatchImageSnapshot });
+
 installInterceptor({
   onUnhandled: (req) => {
     if (req.url.includes('127.0.0.1')) {
@@ -31,4 +33,3 @@ installInterceptor({
     }
   },
 });
-expect.extend({ toMatchImageSnapshot });
