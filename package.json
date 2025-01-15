@@ -15,7 +15,7 @@
   "scripts": {
     "start:example": "yarn workspace example start",
     "test:example": "yarn workspace example test",
-    "build:core": "yarn workspace react-native-radiant build",
+    "build:core": "yarn workspace @bam.tech/react-native-radiant build",
     "test:lib": "yarn workspace @bam.tech/react-native-radiant test",
     "test:example:ci": "SNAPSHOT_TOLERANCE_LEVEL=HIGH yarn workspace example test --maxWorkers=2 --testTimeout=30000"
   },
