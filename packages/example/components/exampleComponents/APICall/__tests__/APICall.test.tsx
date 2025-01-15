@@ -1,7 +1,7 @@
 import React, { act } from 'react';
 import { render } from '@testing-library/react-native';
 import APICall from '../APICall';
-import { getVisualSnapshot } from 'react-native-radiant';
+import { getVisualSnapshot } from '@bam.tech/react-native-radiant';
 import { createMockServer, expectRequestsToMatchHandlers } from '@matthieug/shm';
 
 interface BoredResponse {
