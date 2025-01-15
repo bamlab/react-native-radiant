@@ -14,6 +14,7 @@ const Home = () => {
       <HomeMenuItem title="ScrollView" link="/exampleScreens/ScrollView" />
       <HomeMenuItem title="FlatList" link="/exampleScreens/FlatList" />
       <HomeMenuItem title="SectionList" link="/exampleScreens/SectionList" />
+      <HomeMenuItem title="ActivityIndicator" link="/exampleScreens/ActivityIndicator" />
     </ScrollView>
   );
 };
