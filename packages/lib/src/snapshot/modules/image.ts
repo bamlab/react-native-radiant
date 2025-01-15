@@ -97,7 +97,7 @@ const extractImageData = (imageSource: ImageSourceProp): ImageData => {
   return { type: 'local', imagePath: resolveImageAbsolutePath(imageUri) };
 };
 
-const transformImageData = (imageData: ImageData): string => {
+const transformImageData = (imageData: ImageData): string | null => {
   switch (imageData.type) {
     case 'local':
       return imageToDataURI(imageData.imagePath);
@@ -105,13 +105,13 @@ const transformImageData = (imageData: ImageData): string => {
       return imageData.dataURI;
     case 'remote':
       console.warn('Remote images are not supported');
-      return '';
+      return null;
     case null:
       console.warn('No image URI found');
-      return '';
+      return null;
     default:
       const _exhaustiveCheck: never = imageData;
-      return '';
+      return null;
   }
 };
 
@@ -120,7 +120,7 @@ const convertImageSource = (imageSource: ImageSourceProp): string => {
 
   const imageDataURI = transformImageData(imageData);
 
-  return imageDataURI;
+  return imageDataURI ?? "";
 };
 
 export { convertImageSource, ImageSourceProp };
