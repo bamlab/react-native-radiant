@@ -13,6 +13,7 @@ const Home = () => {
       <HomeMenuItem title="API Call" link="/exampleScreens/APICall" />
       <HomeMenuItem title="ScrollView" link="/exampleScreens/ScrollView" />
       <HomeMenuItem title="FlatList" link="/exampleScreens/FlatList" />
+      <HomeMenuItem title="SectionList" link="/exampleScreens/SectionList" />
     </ScrollView>
   );
 };
