@@ -12,6 +12,7 @@ const Home = () => {
       <HomeMenuItem title="Image" link="/exampleScreens/Image" />
       <HomeMenuItem title="API Call" link="/exampleScreens/APICall" />
       <HomeMenuItem title="ScrollView" link="/exampleScreens/ScrollView" />
+      <HomeMenuItem title="FlatList" link="/exampleScreens/FlatList" />
     </ScrollView>
   );
 };
