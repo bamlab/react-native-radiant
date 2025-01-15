@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
+import { convertImageSource, ImageSourceProp } from './modules/image';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -27,9 +28,15 @@ export const transformRNToRNWeb = (
     console.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
   }
 
+  let newJsonTreeProps = jsonTree.props;
+
+  if (jsonTree.type === 'Image') {
+    newJsonTreeProps.source = convertImageSource(jsonTree.props as ImageSourceProp);
+  }
+
   return React.createElement(
     RNWebEl ?? RNWebElFallback,
-    jsonTree.props,
+    newJsonTreeProps,
     transformRNToRNWeb(jsonTree.children),
   );
 };

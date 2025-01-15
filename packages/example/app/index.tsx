@@ -9,6 +9,7 @@ const Home = () => {
       <HomeMenuItem title="Button" link="/exampleScreens/Button" />
       <HomeMenuItem title="TextInput" link="/exampleScreens/TextInput" />
       <HomeMenuItem title="Expo Vector Icons" link="/exampleScreens/ExpoVectorIcons" />
+      <HomeMenuItem title="Image" link="/exampleScreens/Image" />
     </ScrollView>
   );
 };

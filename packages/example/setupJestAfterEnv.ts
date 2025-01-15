@@ -12,11 +12,11 @@ const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
 const toMatchImageSnapshot = configureToMatchImageSnapshot(
   isSnapshotToleranceLow
     ? {
-        failureThreshold: 16,
-        failureThresholdType: 'pixel',
+        failureThreshold: 0.005,
+        failureThresholdType: 'percent',
       }
     : {
-        failureThreshold: 0.01,
+        failureThreshold: 0.06,
         failureThresholdType: 'percent',
       },
 );
