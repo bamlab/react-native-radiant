@@ -172,6 +172,7 @@ const SectionListExample = () => {
             <Text style={styles.emptyText}>No contacts available.</Text>
           </View>
         }
+        initialNumToRender={20}
       />
     </SafeAreaView>
   );
