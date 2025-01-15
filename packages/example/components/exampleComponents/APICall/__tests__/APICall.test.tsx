@@ -1,7 +1,7 @@
 import React, { act } from 'react';
 import { render } from '@testing-library/react-native';
 import APICall from '../APICall';
-import { renderComponentToWebScreenshot } from 'react-native-radiant';
+import { getVisualSnapshot } from 'react-native-radiant';
 import { createMockServer, expectRequestsToMatchHandlers } from '@matthieug/shm';
 
 interface BoredResponse {
@@ -19,6 +19,6 @@ describe('APICall', () => {
 
     await renderedComponent.findByText('Test activity');
 
-    expect(await renderComponentToWebScreenshot({ renderedComponent })).toMatchImageSnapshot();
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
   });
 });
