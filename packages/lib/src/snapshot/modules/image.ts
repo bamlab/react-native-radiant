@@ -62,11 +62,14 @@ const imageToDataURI = (imagePath: string): string => {
   return `data:${mimeType};base64,${imageData}`;
 };
 
+// This function is used to resolve the absolute path of an image in the project
+// It is used when then image is imported using require
+// In the case, Jest resolves the image from the react-native/jest/assetFileTransformer module
+// So we need to resolve the absolute path of the image from the assetFileTransformer directory
 const resolveImageAbsolutePath = (imageRelativePath: string): string => {
   const reactNativeAssetFileTransformerPath = path.dirname(
     require.resolve('react-native/jest/assetFileTransformer'),
   );
-
   return path.resolve(reactNativeAssetFileTransformerPath, imageRelativePath);
 };
 
@@ -81,6 +84,7 @@ const extractImageData = (imageSource: ImageSourceProp): ImageData => {
   if ('uri' in imageSource.source) {
     imageUri = imageSource.source.uri;
   } else if ('testUri' in imageSource.source) {
+    // When importing the image using require, jest will replace the image path with a testUri
     imageUri = imageSource.source.testUri;
   } else {
     return { type: null };
@@ -120,7 +124,7 @@ const convertImageSource = (imageSource: ImageSourceProp): string => {
 
   const imageDataURI = transformImageData(imageData);
 
-  return imageDataURI ?? "";
+  return imageDataURI ?? '';
 };
 
 export { convertImageSource, ImageSourceProp };
