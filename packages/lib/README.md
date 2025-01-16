@@ -117,13 +117,15 @@ See [full documentation](https://github.com/americanexpress/jest-image-snapshot)
 
 ## Compatibility with other packages
 
-### `@matthieug/shm`
+### Network mocking packages
 
 `react-native-radiant` is based on puppeteer, which uses a headless browser to render the components, and especially network requests.
 
-`@matthieug/shm` intercepts network requests, which causes `react-native-radiant` screenshot tests to fail.
+If you are using a package that intercepts network requests, it may cause `react-native-radiant` screenshot tests to fail.
 
-To fix this, you can add the following configuration to your Jest setup after env file, when installing interceptor, to allow local requests through (including puppeteer requests):
+To fix this, you need to configure the network interceptor in your Jest setup to allow puppeteer requests through. An easy way to do this is to whitelist local requests (e.g. requests which url includes `127.0.0.1`).
+
+Here is an example with `@matthieug/shm`:
 
 ```javascript
 installInterceptor({
@@ -137,7 +139,7 @@ installInterceptor({
 });
 ```
 
-> Warning: this fix requires `@matthieug/shm` version 0.7.3 or higher.
+> Warning: this fix requires `@matthieug/shm` version 0.7.3 or higher, for this specific example.
 
 ## License
 
