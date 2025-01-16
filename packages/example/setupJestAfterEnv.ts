@@ -1,4 +1,4 @@
-import { installInterceptor, passthrough } from '@matthieug/shm';
+import { expectRequestsToMatchHandlers, installInterceptor, passthrough } from '@matthieug/shm';
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
 /*
@@ -33,3 +33,5 @@ installInterceptor({
     }
   },
 });
+
+afterEach(expectRequestsToMatchHandlers);
