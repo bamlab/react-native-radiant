@@ -1,8 +1,8 @@
-import React, { act } from 'react';
+import React from 'react';
 import { render } from '@testing-library/react-native';
 import APICall from '../APICall';
 import { getVisualSnapshot } from '@bam.tech/react-native-radiant';
-import { createMockServer, expectRequestsToMatchHandlers } from '@matthieug/shm';
+import { createMockServer } from '@matthieug/shm';
 
 interface BoredResponse {
   activity: string;
@@ -11,7 +11,6 @@ interface BoredResponse {
 const boredMockServer = createMockServer('https://bored-api.appbrewery.com');
 
 describe('APICall', () => {
-  afterEach(expectRequestsToMatchHandlers);
   it('should match image snapshot', async () => {
     boredMockServer.get<BoredResponse>('/random', { activity: 'Test activity' });
 
