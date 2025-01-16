@@ -10,3 +10,59 @@ describe('TextInputExample', () => {
     expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
   });
 });
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
+describe('TextInputExample', () => {
+  it('should match image snapshot', async () => {
+    const renderedComponent = render(<TextInputExample />);
+
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+  });
+});
