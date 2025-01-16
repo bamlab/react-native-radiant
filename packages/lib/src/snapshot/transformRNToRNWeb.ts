@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactTestRendererNode } from 'react-test-renderer';
 import { convertImageSource, ImageSourceProp } from './modules/image';
+import { defaultTextPlaceholderColor } from './modules/defaults';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -35,9 +36,8 @@ export const transformRNToRNWeb = (
       newJsonTreeProps.source = convertImageSource(jsonTree.props as ImageSourceProp);
       break;
     case 'TextInput':
-      if (!('placeholderTextColor' in jsonTree.props)) {
-        newJsonTreeProps.placeholderTextColor = 'rgba(0, 0, 0, 0.3)';
-      }
+      newJsonTreeProps.placeholderTextColor =
+        newJsonTreeProps.placeholderTextColor ?? defaultTextPlaceholderColor;
       break;
     default:
   }
