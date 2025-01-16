@@ -30,8 +30,16 @@ export const transformRNToRNWeb = (
 
   let newJsonTreeProps = jsonTree.props;
 
-  if (jsonTree.type === 'Image') {
-    newJsonTreeProps.source = convertImageSource(jsonTree.props as ImageSourceProp);
+  switch (jsonTree.type) {
+    case 'Image':
+      newJsonTreeProps.source = convertImageSource(jsonTree.props as ImageSourceProp);
+      break;
+    case 'TextInput':
+      if (!('placeholderTextColor' in jsonTree.props)) {
+        newJsonTreeProps.placeholderTextColor = 'rgba(0, 0, 0, 0.3)';
+      }
+      break;
+    default:
   }
 
   return React.createElement(
