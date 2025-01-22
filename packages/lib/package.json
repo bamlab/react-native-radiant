@@ -6,7 +6,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "tsc"
+    "test": "tsc",
+    "deploy:patch": "yarn build && yarn version patch && yarn npm publish",
+    "deploy:minor": "yarn build && yarn version minor && yarn pack --dry-run",
+    "deploy:major": "yarn build && yarn version major && yarn pack --dry-run"
   },
   "dependencies": {
     "puppeteer": "^23.9.0"
