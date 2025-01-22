@@ -21,4 +21,4 @@ export const getVisualSnapshot = async (
   });
 };
 
-export { configure, globalFonts };
+export { configure };
