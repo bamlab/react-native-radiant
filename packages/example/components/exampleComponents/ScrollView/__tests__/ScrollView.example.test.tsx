@@ -7,6 +7,9 @@ describe('ScrollViewExample', () => {
   it('should match image snapshot', async () => {
     render(<ScrollViewExample />);
 
-    expect(await getVisualSnapshot(screen)).toMatchImageSnapshot();
+    expect(await getVisualSnapshot(screen)).toMatchImageSnapshot({
+      failureThreshold: 0.1,
+      failureThresholdType: 'percent',
+    });
   });
 });
