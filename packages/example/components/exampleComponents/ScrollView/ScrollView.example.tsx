@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 
 const ScrollViewExample = () => {
   return (
-    <ScrollView style={styles.scrollView} contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {Array.from({ length: 100 }).map((_, index) => (
         <Text key={index}>This is item {index}</Text>
       ))}
@@ -11,7 +11,6 @@ const ScrollViewExample = () => {
 };
 
 const styles = StyleSheet.create({
-  scrollView: {},
   container: { alignItems: 'center' },
 });
 
