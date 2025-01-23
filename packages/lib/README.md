@@ -40,7 +40,7 @@ Add the following configuration to your Jest setup file to setup @bam.tech/react
 
 ```javascript
 // setupJest.ts
-import { configure } from 'react-native-radiant';
+import { configure } from '@bam.tech/react-native-radiant';
 
 configure({
   // Add your configuration here
@@ -92,17 +92,10 @@ const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ?
 
 const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
 
-const toMatchImageSnapshot = configureToMatchImageSnapshot(
-  isSnapshotToleranceLow
-    ? {
-        failureThreshold: 16,
-        failureThresholdType: 'pixel',
-      }
-    : {
-        failureThreshold: 0.01,
-        failureThresholdType: 'percent',
-      },
-);
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  failureThreshold: isSnapshotToleranceLow ? 16 : 0.01,
+  failureThresholdType: isSnapshotToleranceLow ? 'pixel' : 'percent',
+});
 
 expect.extend({ toMatchImageSnapshot });
 ```
