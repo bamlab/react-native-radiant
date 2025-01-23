@@ -10,17 +10,10 @@ const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ?
 
 const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
 
-const toMatchImageSnapshot = configureToMatchImageSnapshot(
-  isSnapshotToleranceLow
-    ? {
-        failureThreshold: 0.005,
-        failureThresholdType: 'percent',
-      }
-    : {
-        failureThreshold: 0.06,
-        failureThresholdType: 'percent',
-      },
-);
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  failureThreshold: isSnapshotToleranceLow ? 0.005 : 0.06,
+  failureThresholdType: 'percent',
+});
 
 expect.extend({ toMatchImageSnapshot });
 
