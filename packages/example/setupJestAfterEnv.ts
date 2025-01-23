@@ -1,5 +1,6 @@
-import { expectRequestsToMatchHandlers, installInterceptor, passthrough } from '@matthieug/shm';
+import { expectRequestsToMatchHandlers, installInterceptor } from '@matthieug/shm';
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
+import { setMaxListeners } from 'node:events';
 
 /*
 Snapshot tolerance level was introduced to set different tolerance levels between local and CI environments.
@@ -10,17 +11,10 @@ const snapshotToleranceLevel = process.env.SNAPSHOT_TOLERANCE_LEVEL === 'HIGH' ?
 
 const isSnapshotToleranceLow = snapshotToleranceLevel === 'LOW';
 
-const toMatchImageSnapshot = configureToMatchImageSnapshot(
-  isSnapshotToleranceLow
-    ? {
-        failureThreshold: 0.005,
-        failureThresholdType: 'percent',
-      }
-    : {
-        failureThreshold: 0.06,
-        failureThresholdType: 'percent',
-      },
-);
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  failureThreshold: isSnapshotToleranceLow ? 0.005 : 0.06,
+  failureThresholdType: 'percent',
+});
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -33,5 +27,7 @@ installInterceptor({
     }
   },
 });
+
+setMaxListeners(0);
 
 afterEach(expectRequestsToMatchHandlers);

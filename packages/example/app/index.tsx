@@ -11,6 +11,7 @@ const Home = () => {
       <HomeMenuItem title="Expo Vector Icons" link="/exampleScreens/ExpoVectorIcons" />
       <HomeMenuItem title="Image" link="/exampleScreens/Image" />
       <HomeMenuItem title="API Call" link="/exampleScreens/APICall" />
+      <HomeMenuItem title="ScrollView" link="/exampleScreens/ScrollView" />
     </ScrollView>
   );
 };
