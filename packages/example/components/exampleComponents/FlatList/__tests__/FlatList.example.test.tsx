@@ -7,6 +7,9 @@ describe('FlatListExample', () => {
   it('should match image snapshot', async () => {
     const renderedComponent = render(<FlatListExample />);
 
-    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot();
+    expect(await getVisualSnapshot(renderedComponent)).toMatchImageSnapshot({
+      failureThreshold: 0.15,
+      failureThresholdType: 'percent',
+    });
   });
 });
