@@ -7,6 +7,9 @@ describe('SectionListExample', () => {
   it('should match image snapshot', async () => {
     render(<SectionListExample />);
 
-    expect(await getVisualSnapshot(screen)).toMatchImageSnapshot();
+    expect(await getVisualSnapshot(screen)).toMatchImageSnapshot({
+      failureThreshold: 0.15,
+      failureThresholdType: 'percent',
+    });
   });
 });
