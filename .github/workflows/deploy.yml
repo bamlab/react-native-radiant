@@ -107,6 +107,9 @@ jobs:
         env:
           YARN_ENABLE_MIRROR: 'false' # Prevent populating global cache for caches misses (local cache only)
 
+      - name: Build package
+        run: yarn build:core
+
       - name: Publish to npm
         run: yarn lib:publish
         env:
