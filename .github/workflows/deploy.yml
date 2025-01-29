@@ -44,7 +44,7 @@ jobs:
         with:
           path: |
             packages/example/.jest/cache
-          key: ${{ runner.os }}-quality-${{ github.ref_name }}-${{ github.sha }}
+          key: ${{ runner.os }}-quality-${{ github.ref_name }}-jest-test
           restore-keys: |
             ${{ runner.os }}-quality-${{ github.ref_name }}
             ${{ runner.os }}-quality-
@@ -73,9 +73,10 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Get version from package.json
-        id: get_version
-        run: echo "PACKAGE_VERSION=$(node -p \"require('./packages/lib/package.json').version\")" >> $GITHUB_ENV
+      - name: Set PACKAGE_VERSION
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./packages/lib/package.json').version")
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
 
       - name: Create new release
         id: create_release
