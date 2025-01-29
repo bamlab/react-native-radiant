@@ -5,60 +5,13 @@ on:
     # This enables manual trigger through GitHub UI
 
 jobs:
-  test:
-    name: Run Tests
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-
-      - name: Load dependency cache
-        uses: actions/cache@v3
-        with:
-          # .yarn/cache: speed up fetch step
-          # .yarn/install-state.gz + node_modules: speed up link step and resolution step
-          path: |
-            **/node_modules
-            .yarn/cache
-            .yarn/install-state.gz
-          key: ${{ runner.os }}-node-${{ steps.setup-node.outputs.node-version }}-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ steps.setup-node.outputs.node-version }}-modules-
-
-      - name: Install dependencies
-        run: corepack enable && yarn --immutable
-        env:
-          YARN_ENABLE_MIRROR: 'false' # Prevent populating global cache for caches misses (local cache only)
-
-      - name: Load jest testing cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            packages/example/.jest/cache
-          key: ${{ runner.os }}-quality-${{ github.ref_name }}-jest-test
-          restore-keys: |
-            ${{ runner.os }}-quality-${{ github.ref_name }}
-            ${{ runner.os }}-quality-
-
-      - name: Install Chrome
-        run: npx puppeteer browsers install chrome
-
-      - name: TypeScript in lib
-        run: yarn test:lib
-
-      - name: Jest in example app
-        run: yarn test:example:ci --maxWorkers=2
+  call-quality:
+    uses: ./.github/workflows/quality.yml
 
   release:
     name: Create Release
     runs-on: ubuntu-22.04
-    needs: test
+    needs: call-quality
     if: success()
 
     steps:
