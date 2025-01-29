@@ -1,7 +1,7 @@
-import ScrollView from '@components/exampleComponents/ScrollView/ScrollView.example';
+import { ScrollViewExample } from '@components/exampleComponents/ScrollView/ScrollView.example';
 
-const ScrollViewExample = () => {
-  return <ScrollView />;
+const ExampleScrollView = () => {
+  return <ScrollViewExample />;
 };
 
-export default ScrollViewExample;
+export default ExampleScrollView;
