@@ -18,7 +18,7 @@
     "build:core": "yarn workspace @bam.tech/react-native-radiant build",
     "test:lib": "yarn workspace @bam.tech/react-native-radiant test",
     "test:example:ci": "SNAPSHOT_TOLERANCE_LEVEL=HIGH yarn workspace example test --maxWorkers=2 --testTimeout=30000",
-    "lib:publish": "yarn workspace @bam.tech/react-native-radiant publish"
+    "lib:publish": "yarn workspace @bam.tech/react-native-radiant lib:publish"
   },
   "packageManager": "yarn@4.6.0"
 }
