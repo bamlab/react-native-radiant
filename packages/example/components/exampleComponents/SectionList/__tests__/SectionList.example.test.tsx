@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react-native';
 import { getVisualSnapshot } from '@bam.tech/react-native-radiant';
-import { ScrollViewExample } from '../ScrollView.example';
+import { SectionListExample } from '../SectionList.example';
 
-describe('ScrollViewExample', () => {
+describe('SectionListExample', () => {
   it('should match image snapshot', async () => {
-    render(<ScrollViewExample />);
+    render(<SectionListExample />);
 
     expect(await getVisualSnapshot(screen)).toMatchImageSnapshot({
-      failureThreshold: 0.1,
+      failureThreshold: 0.15,
       failureThresholdType: 'percent',
     });
   });
