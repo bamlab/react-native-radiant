@@ -95,7 +95,7 @@ const Item = ({ name, phone }: ItemProps) => (
   </View>
 );
 
-const FlatListExample = () => {
+export const FlatListExample = () => {
   const renderItem = ({ item }: { item: ItemProps }) => (
     <Item name={item.name} phone={item.phone} />
   );
@@ -144,5 +144,3 @@ const styles = StyleSheet.create({
     height: 10,
   },
 });
-
-export default FlatListExample;

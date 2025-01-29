@@ -1,4 +1,4 @@
-import FlatListExample from '@components/exampleComponents/FlatList/FlatList.example';
+import { FlatListExample } from '@components/exampleComponents/FlatList/FlatList.example';
 
 const ExampleFlatList = () => {
   return <FlatListExample />;
