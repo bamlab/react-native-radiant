@@ -1,7 +1,7 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 import { getVisualSnapshot } from '@bam.tech/react-native-radiant';
-import SectionListExample from '../SectionList.example';
+import { SectionListExample } from '../SectionList.example';
 
 describe('SectionListExample', () => {
   it('should match image snapshot', async () => {

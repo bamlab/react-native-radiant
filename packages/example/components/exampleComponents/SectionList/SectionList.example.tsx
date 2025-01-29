@@ -146,7 +146,7 @@ const SectionHeader = ({ title }: { title: string }) => (
   </View>
 );
 
-const SectionListExample = () => {
+export const SectionListExample = () => {
   // Function to render each item
   const renderItem = ({ item }: ListRenderItemInfo<Contact>) => (
     <Item id={item.id} name={item.name} phone={item.phone} />
@@ -177,8 +177,6 @@ const SectionListExample = () => {
     </SafeAreaView>
   );
 };
-
-export default SectionListExample;
 
 const styles = StyleSheet.create({
   container: {

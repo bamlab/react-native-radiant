@@ -1,4 +1,4 @@
-import SectionListExample from '@components/exampleComponents/SectionList/SectionList.example';
+import { SectionListExample } from '@components/exampleComponents/SectionList/SectionList.example';
 
 const ExampleSectionList = () => {
   return <SectionListExample />;
