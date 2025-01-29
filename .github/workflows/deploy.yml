@@ -3,6 +3,9 @@ name: Deploy package
 on:
   workflow_dispatch:
     # This enables manual trigger through GitHub UI
+  push:
+    branches:
+      - 54/add-cd
 
 jobs:
   test:
