@@ -1,6 +1,6 @@
 {
   "name": "@bam.tech/react-native-radiant",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
