@@ -11,60 +11,36 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
 - [Example of usage with `jest-image-snapshot`](#example-of-usage-with-jest-image-snapshot)
   - [Threshold](#threshold)
 - [Compatibility with other packages](#compatibility-with-other-packages)
-  - [`@matthieug/shm`](#matthieugshm)
+  - [Network mocking packages](#network-mocking-packages)
 - [License](#license)
 
-## Installation
+````
 
-This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
-
-```bash
-yarn add --dev @testing-library/react-native react-native-web
-```
-
-Then you can install `@bam.tech/react-native-radiant`:
-
-```bash
-yarn add --dev @bam.tech/react-native-radiant
-```
-
-## Setup
+## Example of usage with `jest-image-snapshot`
 
 First, you need to install `jest-image-snapshot` and configure it in your Jest setup files (see the [jest-image-snapshot Github repository](https://github.com/americanexpress/jest-image-snapshot)):
 
 ```bash
-yarn add --dev jest-image-snapshot
-```
+yarn add --dev jest-image-snapshot @types/jest-image-snapshot
+````
 
-Add the following configuration to your Jest setup file to setup @bam.tech/react-native-radiant:
+To enable jest image snapshot testing, you need to add the following configuration to your Jest setup after env file (or else `expect` will not be defined):
 
 ```javascript
-// setupJest.ts
-import { configure } from '@bam.tech/react-native-radiant';
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
-configure({
-  // Add your configuration here
-  fonts: [
-    // List of fonts to load
-    {
-      fontFamily: 'Nunito-Black',
-      fontPath: './assets/fonts/Nunito-Black.ttf',
-    },
-  ],
-});
+expect.extend({ toMatchImageSnapshot });
 ```
-
-## Example of usage with `jest-image-snapshot`
 
 This is what a visual snapshot test looks like:
 
 ```javascript
+import { render, screen } from '@testing-library/react-native';
+
 it('should match visual snapshot', async () => {
-  const renderedComponent = render(<MyComponent />);
+  render(<MyComponent />);
 
-  const visualSnapshot = await getVisualSnapshot(renderedComponent);
-
-  expect(visualSnapshot).toMatchImageSnapshot();
+  expect(await getVisualSnapshot(screen)).toMatchImageSnapshot();
 });
 ```
 
