@@ -1,4 +1,4 @@
-import { configure, globalFonts } from './config/configure';
+import { configure } from './config/configure';
 import { generateVisualSnapshotFromHTML } from './snapshot/generateVisualSnapshotFromHTML';
 import { generateWebContent } from './snapshot/generateWebContent';
 import { RenderResult } from '@testing-library/react-native';
