@@ -37,4 +37,5 @@ configure({
         '../../node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialIcons.ttf',
     },
   ],
+  defaultFallbackImage: './assets/default.jpg',
 });
