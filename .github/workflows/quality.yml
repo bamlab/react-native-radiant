@@ -55,6 +55,9 @@ jobs:
       - name: Install Chrome
         run: npx puppeteer browsers install chrome
 
+      - name: ESLint
+        run: yarn lint
+
       - name: TypeScript in lib
         run: yarn test:lib
 
