@@ -3,7 +3,7 @@ import { ReactTestRendererNode } from 'react-test-renderer';
 import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
 
-import { View as WebView } from 'react-native-web';
+import ReactNativeWeb from 'react-native-web';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -26,7 +26,7 @@ export const transformRNToRNWeb = (
   const nodeType = jsonTree.type.replace('RCT', '');
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const RNWebEl = require('react-native-web')[nodeType];
-  const RNWebElFallback = WebView;
+  const RNWebElFallback = ReactNativeWeb.View;
 
   if (RNWebEl === undefined) {
     console.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
