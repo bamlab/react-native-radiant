@@ -16,16 +16,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup node
         id: setup-node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
 
       - name: Load dependency cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           # .yarn/cache: speed up fetch step
           # .yarn/install-state.gz + node_modules: speed up link step and resolution step
@@ -43,7 +43,7 @@ jobs:
           YARN_ENABLE_MIRROR: 'false' # Prevent populating global cache for caches misses (local cache only)
 
       - name: Load jest testing cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             packages/example/.jest/cache
