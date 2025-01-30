@@ -6,6 +6,7 @@ import { getFontsHTML } from './modules/fonts';
 export const generateWebContent = (renderedComponent: RenderResult) => {
   const pageBody = ReactDOMServer.renderToString(transformRNToRNWeb(renderedComponent.toJSON()));
 
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const pageStyle = require('react-native-web')['StyleSheet'].getSheet().textContent;
 
   const fontsHTML = getFontsHTML();
