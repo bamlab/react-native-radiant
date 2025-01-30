@@ -24,8 +24,9 @@ export const transformRNToRNWeb = (
   }
 
   const nodeType = jsonTree.type.replace('RCT', '');
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const RNWebEl = require('react-native-web')[nodeType];
+  const RNWebEl = ReactNativeWeb[nodeType as keyof typeof ReactNativeWeb] as
+    | React.ComponentType
+    | undefined;
   const RNWebElFallback = ReactNativeWeb.View;
 
   if (RNWebEl === undefined) {
