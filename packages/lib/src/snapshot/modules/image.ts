@@ -114,6 +114,7 @@ const transformImageData = (imageData: ImageData): string | null => {
       console.warn('No image URI found');
       return null;
     default:
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-case-declarations
       const _exhaustiveCheck: never = imageData;
       return null;
   }

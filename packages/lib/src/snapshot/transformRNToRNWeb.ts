@@ -3,6 +3,8 @@ import { ReactTestRendererNode } from 'react-test-renderer';
 import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
 
+import * as ReactNativeWeb from 'react-native-web';
+
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
 ): null | React.ReactNode | React.ReactNode[] => {
@@ -22,14 +24,16 @@ export const transformRNToRNWeb = (
   }
 
   const nodeType = jsonTree.type.replace('RCT', '');
-  const RNWebEl = require('react-native-web')[nodeType];
-  const RNWebElFallback = require('react-native-web')['View'];
+  const RNWebEl = ReactNativeWeb[nodeType as keyof typeof ReactNativeWeb] as
+    | React.ComponentType
+    | undefined;
+  const RNWebElFallback = ReactNativeWeb.View;
 
   if (RNWebEl === undefined) {
     console.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
   }
 
-  let newJsonTreeProps = jsonTree.props;
+  const newJsonTreeProps = jsonTree.props;
 
   switch (jsonTree.type) {
     case 'Image':
