@@ -1,0 +1,69 @@
+name: Deploy package
+
+on:
+  workflow_dispatch:
+    # This enables manual trigger through GitHub UI
+
+jobs:
+  call-quality:
+    uses: ./.github/workflows/quality.yml
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-22.04
+    needs: call-quality
+    if: success()
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Set PACKAGE_VERSION
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./packages/lib/package.json').version")
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
+
+      - name: Create new release
+        id: create_release
+        uses: comnoco/create-release-action@v2.0.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.PACKAGE_VERSION }}
+          release_name: 'v${{ env.PACKAGE_VERSION }}'
+          draft: false
+          prerelease: false
+
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-22.04
+    needs: release
+    if: success()
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: corepack enable && yarn --immutable
+        env:
+          YARN_ENABLE_MIRROR: 'false' # Prevent populating global cache for caches misses (local cache only)
+
+      - name: Build package
+        run: yarn build:core
+
+      - name: Publish to npm
+        run: yarn lib:publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
