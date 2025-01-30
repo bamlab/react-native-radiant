@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react-native';
 import { getVisualSnapshot } from '@bam.tech/react-native-radiant';
 import { FlatListExample } from '../FlatList.example';

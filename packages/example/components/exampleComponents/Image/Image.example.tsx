@@ -1,10 +1,11 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
+import DeerImage from '@assets/deer.jpg';
 
 const ImageExample = () => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require('@assets/deer.jpg')} style={styles.image} />
+        <Image source={DeerImage} style={styles.image} />
         <Text>Photo by Ash Edmonds on Unsplash</Text>
       </View>
       <View style={styles.imageContainer}>
