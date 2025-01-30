@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { defaultFallbackImage } from '../../config/configure';
 
 type ImageSourceProp =
   | {
@@ -109,7 +110,7 @@ const transformImageData = (imageData: ImageData): string | null => {
       return imageData.dataURI;
     case 'remote':
       console.warn('Remote images are not supported');
-      return null;
+      return defaultFallbackImage ? imageToDataURI(defaultFallbackImage) : null;
     case null:
       console.warn('No image URI found');
       return null;
