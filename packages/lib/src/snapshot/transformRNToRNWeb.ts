@@ -3,7 +3,7 @@ import { ReactTestRendererNode } from 'react-test-renderer';
 import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
 
-import ReactNativeWeb from 'react-native-web';
+import * as ReactNativeWeb from 'react-native-web';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
