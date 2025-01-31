@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { remoteFallbackImage } from '../../config/configure';
 
 type ImageSourceProp =
   | {
@@ -108,8 +109,12 @@ const transformImageData = (imageData: ImageData): string | null => {
     case 'data-uri':
       return imageData.dataURI;
     case 'remote':
-      console.warn('Remote images are not supported');
-      return null;
+      if (!remoteFallbackImage) {
+        console.warn(
+          'Remote images are not supported in tests: if you need to use a remote image, provide a fallback image using configure function',
+        );
+      }
+      return remoteFallbackImage ? imageToDataURI(remoteFallbackImage) : null;
     case null:
       console.warn('No image URI found');
       return null;
