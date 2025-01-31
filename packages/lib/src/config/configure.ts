@@ -10,7 +10,7 @@ type ConfigureOptions = {
 
 const globalFonts: Font[] = [];
 
-let defaultFallbackImage = '';
+let remoteFallbackImage = '';
 
 function configure(options: ConfigureOptions) {
   if (options.fonts) {
@@ -21,8 +21,8 @@ function configure(options: ConfigureOptions) {
   }
 
   if (options.defaultFallbackImage) {
-    defaultFallbackImage = options.defaultFallbackImage;
+    remoteFallbackImage = options.defaultFallbackImage;
   }
 }
 
-export { configure, globalFonts, defaultFallbackImage };
+export { configure, globalFonts, remoteFallbackImage };
