@@ -14,15 +14,13 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
   - [Network mocking packages](#network-mocking-packages)
 - [License](#license)
 
-````
-
 ## Example of usage with `jest-image-snapshot`
 
 First, you need to install `jest-image-snapshot` and configure it in your Jest setup files (see the [jest-image-snapshot Github repository](https://github.com/americanexpress/jest-image-snapshot)):
 
 ```bash
 yarn add --dev jest-image-snapshot @types/jest-image-snapshot
-````
+```
 
 To enable jest image snapshot testing, you need to add the following configuration to your Jest setup after env file (or else `expect` will not be defined):
 
