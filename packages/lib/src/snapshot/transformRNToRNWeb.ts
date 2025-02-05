@@ -5,8 +5,11 @@ import { defaultTextPlaceholderColor } from './modules/defaults';
 import * as ReactNativeWeb from 'react-native-web';
 import { logger } from '../utils/logger';
 import { transformStyle } from './modules/style';
+import { convertSVGTypeToHTML, isElementSVG } from './modules/svg';
 
 const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
+  if (isElementSVG(node.type)) return convertSVGTypeToHTML(node.type);
+
   // for components like RCTScrollView
   const nodeType = node.type.replace('RCT', '');
 
