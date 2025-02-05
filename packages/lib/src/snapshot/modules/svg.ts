@@ -83,6 +83,12 @@ export const convertSVGProps = (node: ReactTestRendererJSON) => {
     delete newProps.style.flex;
   }
 
+  // delete props not supported by React DOM Server
+  delete newProps.propList;
+  delete newProps.tintColor;
+  delete newProps.bbWidth;
+  delete newProps.bbHeight;
+
   // if fill is an object, convert it to a string using convertFill function
   if (newProps.fill && typeof newProps.fill === 'object') {
     newProps.fill = convertFill(newProps.fill);
