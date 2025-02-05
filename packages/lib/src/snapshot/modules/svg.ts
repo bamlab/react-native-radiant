@@ -24,6 +24,15 @@ const svgElementsMap: Record<string, string> = {
   RNSVGTSpan: 'tspan',
   RNSVGTextPath: 'textPath',
   RNSVGForeignObject: 'foreignObject',
+  RNSVGFeColorMatrix: 'feColorMatrix',
+  RNSVGFeComposite: 'feComposite',
+  RNSVGFeGaussianBlur: 'feGaussianBlur',
+  RNSVGFeMerge: 'feMerge',
+  RNSVGFeOffset: 'feOffset',
+  RNSVGFilter: 'filter',
+  RNSVGMarker: 'marker',
+  RNSVGSvgAndroid: 'svg',
+  RNSVGSvgIOS: 'svg',
 };
 
 export const isElementSVG = (nodeType: string) => nodeType in svgElementsMap;
