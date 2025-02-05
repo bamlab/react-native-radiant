@@ -7,12 +7,25 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
 ## Contents
 
 - [Installation](#installation)
-- [Setup](#setup)
 - [Example of usage with `jest-image-snapshot`](#example-of-usage-with-jest-image-snapshot)
   - [Threshold](#threshold)
 - [Compatibility with other packages](#compatibility-with-other-packages)
   - [Network mocking packages](#network-mocking-packages)
 - [License](#license)
+
+# Installation
+
+This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
+
+```bash
+yarn add --dev @testing-library/react-native react-native-web react-dom
+```
+
+Then you can install `@bam.tech/react-native-radiant`:
+
+```bash
+yarn add --dev @bam.tech/react-native-radiant
+```
 
 ## Example of usage with `jest-image-snapshot`
 
