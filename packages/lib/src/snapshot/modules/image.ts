@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { remoteFallbackImage } from '../../config/configure';
+import { logger } from '../../utils/logger';
 
 type ImageSourceProp =
   | {
@@ -48,9 +49,9 @@ const imageToDataURI = (imagePath: string): string => {
         return 'image/gif';
       default:
         if (fileExtension === 'undefined') {
-          console.warn('No file extension found');
+          logger.warn('No file extension found');
         } else {
-          console.warn(`Unknown file extension: ${fileExtension}`);
+          logger.warn(`Unknown file extension: ${fileExtension}`);
         }
         return '';
     }
@@ -110,13 +111,13 @@ const transformImageData = (imageData: ImageData): string | null => {
       return imageData.dataURI;
     case 'remote':
       if (!remoteFallbackImage) {
-        console.warn(
+        logger.warn(
           'Remote images are not supported in tests: if you need to use a remote image, provide a fallback image using configure function',
         );
       }
       return remoteFallbackImage ? imageToDataURI(remoteFallbackImage) : null;
     case null:
-      console.warn('No image URI found');
+      logger.warn('No image URI found');
       return null;
     default:
       // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-case-declarations

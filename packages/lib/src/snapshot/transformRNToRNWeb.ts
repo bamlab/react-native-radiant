@@ -4,6 +4,7 @@ import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
 
 import * as ReactNativeWeb from 'react-native-web';
+import { logger } from '../utils/logger';
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
@@ -30,7 +31,7 @@ export const transformRNToRNWeb = (
   const RNWebElFallback = ReactNativeWeb.View;
 
   if (RNWebEl === undefined) {
-    console.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
+    logger.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
   }
 
   const newJsonTreeProps = jsonTree.props;
