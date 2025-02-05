@@ -5,7 +5,7 @@ import { defaultTextPlaceholderColor } from './modules/defaults';
 import * as ReactNativeWeb from 'react-native-web';
 import { logger } from '../utils/logger';
 import { transformStyle } from './modules/style';
-import { convertSVGTypeToHTML, isElementSVG } from './modules/svg';
+import { convertSVGProps, convertSVGTypeToHTML, isElementSVG } from './modules/svg';
 
 const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
   if (isElementSVG(node.type)) return convertSVGTypeToHTML(node.type);
@@ -30,6 +30,10 @@ const convertNodeProps = (node: ReactTestRendererJSON) => {
   const { props, type } = node;
 
   const newProps = { ...props };
+
+  if (isElementSVG(type)) {
+    return convertSVGProps(node);
+  }
 
   newProps.style = transformStyle(newProps.style);
 

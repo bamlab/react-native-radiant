@@ -69,6 +69,11 @@ export const convertSVGProps = (node: ReactTestRendererJSON) => {
     newProps.style = Object.assign({}, ...newProps.style);
   }
 
+  // remove flex: 0 from style
+  if (newProps.style?.flex === 0) {
+    delete newProps.style.flex;
+  }
+
   // if fill is an object, convert it to a string using convertFill function
   if (newProps.fill && typeof newProps.fill === 'object') {
     newProps.fill = convertFill(newProps.fill);
