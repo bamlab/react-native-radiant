@@ -7,6 +7,7 @@ const config = {
   setupFiles: ['./setupJest.ts'],
   setupFilesAfterEnv: ['./setupJestAfterEnv.ts'],
   cacheDirectory: '.jest/cache',
+  reporters: ['default', 'jest-image-snapshot/src/outdated-snapshot-reporter.js'],
 };
 
 module.exports = config;
