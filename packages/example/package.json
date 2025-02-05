@@ -34,18 +34,5 @@
     "jest-image-snapshot": "^6.4.0",
     "typescript": "^5.3.3"
   },
-  "private": true,
-  "jest": {
-    "preset": "jest-expo",
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
-    ],
-    "setupFiles": [
-      "./setupJest.ts"
-    ],
-    "setupFilesAfterEnv": [
-      "./setupJestAfterEnv.ts"
-    ],
-    "cacheDirectory": ".jest/cache"
-  }
+  "private": true
 }
