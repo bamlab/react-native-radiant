@@ -1169,6 +1169,7 @@ __metadata:
   peerDependencies:
     "@testing-library/react-native": ^11.0.0 || ^12.0.0
     react: "*"
+    react-dom: "*"
     react-native: "*"
     react-native-web: "*"
   languageName: unknown
