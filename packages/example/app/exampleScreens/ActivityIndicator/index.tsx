@@ -1,4 +1,4 @@
-import ActivityIndicatorExample from '@components/exampleComponents/ActivityIndicator/ActivityIndicator.example';
+import { ActivityIndicatorExample } from '@components/exampleComponents/ActivityIndicator/ActivityIndicator.example';
 
 const ExampleActivityIndicator = () => {
   return <ActivityIndicatorExample />;
