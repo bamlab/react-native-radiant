@@ -52,11 +52,6 @@ export const convertSVGProps = (node: ReactTestRendererJSON) => {
     newProps.style = Object.assign({}, ...newProps.style);
   }
 
-  // remove flex: 0 from style
-  if (newProps.style?.flex === 0) {
-    delete newProps.style.flex;
-  }
-
   if (newProps.fill && typeof newProps.fill === 'object') {
     const fillValue = newProps.fill as { payload: number };
     newProps.fill = convertInt32ColorToRGBA(fillValue.payload);
@@ -66,12 +61,6 @@ export const convertSVGProps = (node: ReactTestRendererJSON) => {
     const strokeValue = newProps.stroke as { payload: number };
     newProps.stroke = convertInt32ColorToRGBA(strokeValue.payload);
   }
-
-  // delete props not supported by React DOM Server
-  delete newProps.propList;
-  delete newProps.tintColor;
-  delete newProps.bbWidth;
-  delete newProps.bbHeight;
 
   // convert every prop from camelCase to dashed
   Object.keys(newProps).forEach((key) => {
