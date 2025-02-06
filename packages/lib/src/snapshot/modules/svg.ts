@@ -1,4 +1,6 @@
 import { ReactTestRendererJSON } from 'react-test-renderer';
+import { convertInt32ColorToRGBA } from 'react-native-svg/src/web/utils/convertInt32Color';
+import { camelCaseToDashed } from 'react-native-svg/src/web/utils/index';
 
 const svgElementsMap: Record<string, string> = {
   RNSVGSvgView: 'svg',
@@ -39,35 +41,7 @@ export const isElementSVG = (nodeType: string) => nodeType in svgElementsMap;
 
 export const convertSVGTypeToHTML = (nodeType: string) => svgElementsMap[nodeType];
 
-const convertFill = (fill: { type: number; payload: number }): string => {
-  // Optionally, handle different fill types
-  if (fill.type !== 0) {
-    throw new Error('Unsupported fill type');
-  }
-
-  // Extract ARGB components from the 32-bit integer
-  const argb = fill.payload;
-  const alpha = (argb >>> 24) & 0xff; // most significant byte
-  const red = (argb >>> 16) & 0xff;
-  const green = (argb >>> 8) & 0xff;
-  const blue = argb & 0xff;
-
-  // Convert alpha from 0–255 to 0–1
-  const alphaNormalized = alpha / 255;
-
-  // OPTIONAL: If you prefer returning RGBA for all cases:
-  // return `rgba(${red}, ${green}, ${blue}, ${alphaNormalized.toFixed(2)})`;
-
-  // Otherwise, return hex if fully opaque
-  if (alpha === 255) {
-    // Return standard hex format
-    return `#${[red, green, blue].map((c) => c.toString(16).padStart(2, '0')).join('')}`;
-  }
-
-  // Return RGBA if partially transparent
-  return `rgba(${red}, ${green}, ${blue}, ${alphaNormalized.toFixed(2)})`;
-};
-
+// Fix props for converting to HTML
 export const convertSVGProps = (node: ReactTestRendererJSON) => {
   const { props } = node;
 
@@ -83,16 +57,30 @@ export const convertSVGProps = (node: ReactTestRendererJSON) => {
     delete newProps.style.flex;
   }
 
+  if (newProps.fill && typeof newProps.fill === 'object') {
+    const fillValue = newProps.fill as { payload: number };
+    newProps.fill = convertInt32ColorToRGBA(fillValue.payload);
+  }
+
+  if (newProps.stroke && typeof newProps.stroke === 'object') {
+    const strokeValue = newProps.stroke as { payload: number };
+    newProps.stroke = convertInt32ColorToRGBA(strokeValue.payload);
+  }
+
   // delete props not supported by React DOM Server
   delete newProps.propList;
   delete newProps.tintColor;
   delete newProps.bbWidth;
   delete newProps.bbHeight;
 
-  // if fill is an object, convert it to a string using convertFill function
-  if (newProps.fill && typeof newProps.fill === 'object') {
-    newProps.fill = convertFill(newProps.fill);
-  }
+  // convert every prop from camelCase to dashed
+  Object.keys(newProps).forEach((key) => {
+    const newKey = camelCaseToDashed(key);
+    if (newKey !== key) {
+      newProps[newKey] = newProps[key];
+      delete newProps[key];
+    }
+  });
 
   return newProps;
 };
