@@ -33,6 +33,8 @@ yarn add --dev @bam.tech/react-native-radiant
 
 You can configure log levels using environment variable `REACT_NATIVE_RADIANT_LOG_LEVEL`. There are four levels available: `off` (no log levels), `error`, `warn`, `log`. The default level is `log`.
 
+You can also disable logs of third-party libraries by setting `REACT_NATIVE_RADIANT_DISABLE_THIRD_PARTY_LOGS` to `true`. It will disable logs of libraries used by `react-native-radiant`, such as `puppeteer` and `react-native-web`.
+
 ## Example of usage with `jest-image-snapshot`
 
 First, you need to install `jest-image-snapshot` and configure it in your Jest setup files (see the [jest-image-snapshot Github repository](https://github.com/americanexpress/jest-image-snapshot)):
