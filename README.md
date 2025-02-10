@@ -7,6 +7,8 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
 ## Contents
 
 - [Installation](#installation)
+  - [Configuration](#configuration)
+    - [Log levels](#log-levels)
 - [Example of usage with `jest-image-snapshot`](#example-of-usage-with-jest-image-snapshot)
   - [Threshold](#threshold)
 - [Compatibility with other packages](#compatibility-with-other-packages)
