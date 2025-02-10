@@ -1,0 +1,30 @@
+{
+  "name": "@bam.tech/react-native-radiant-svg",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc",
+    "deploy:patch": "yarn build && yarn version patch",
+    "deploy:minor": "yarn build && yarn version minor",
+    "deploy:major": "yarn build && yarn version major",
+    "lib:publish": "npm publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@bam.tech/react-native-radiant": "*",
+    "@testing-library/react-native": "^11.0.0 || ^12.0.0",
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*",
+    "react-native-svg": "*",
+    "react-native-web": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
