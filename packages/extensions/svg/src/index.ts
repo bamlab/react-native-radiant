@@ -1,6 +1,5 @@
 import { ReactTestRendererJSON } from 'react-test-renderer';
-import { convertInt32ColorToRGBA } from 'react-native-svg/src/web/utils/convertInt32Color';
-import { camelCaseToDashed } from 'react-native-svg/src/web/utils/index';
+import { convertInt32ColorToRGBA, camelCaseToDashed } from './utils';
 
 const svgElementsMap: Record<string, string> = {
   RNSVGSvgView: 'svg',
