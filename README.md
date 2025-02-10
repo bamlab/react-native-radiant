@@ -13,7 +13,7 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
   - [Network mocking packages](#network-mocking-packages)
 - [License](#license)
 
-# Installation
+## Installation
 
 This package relies on `@testing-library/react-native` and `react-native-web`. You need to install them first:
 
@@ -26,6 +26,12 @@ Then you can install `@bam.tech/react-native-radiant`:
 ```bash
 yarn add --dev @bam.tech/react-native-radiant
 ```
+
+### Configuration
+
+#### Log levels
+
+You can configure log levels using environment variable `REACT_NATIVE_RADIANT_LOG_LEVEL`. There are four levels available: `off` (no log levels), `error`, `warn`, `log`. The default level is `log`.
 
 ## Example of usage with `jest-image-snapshot`
 
