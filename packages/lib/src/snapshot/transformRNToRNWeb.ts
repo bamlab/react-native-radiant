@@ -3,6 +3,7 @@ import { ReactTestRendererJSON, ReactTestRendererNode } from 'react-test-rendere
 import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
 import * as ReactNativeWeb from 'react-native-web';
+import { logger } from '../utils/logger';
 
 const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
   // for components like RCTScrollView
@@ -15,7 +16,7 @@ const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
   const RNWebElFallback = ReactNativeWeb.View;
 
   if (RNWebElement === undefined) {
-    console.warn(`No equivalent for ${node.type} in react-native-web`);
+    logger.warn(`No equivalent for ${node.type} in react-native-web`);
   }
 
   return RNWebElement ?? RNWebElFallback;
