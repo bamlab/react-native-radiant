@@ -11,7 +11,7 @@ First, you need to build the library:
 ```bash
 yarn install
 cd packages/lib
-yarn build
+yarn build # add --watch for watch mode
 ```
 
 Then, you can run the example app:
