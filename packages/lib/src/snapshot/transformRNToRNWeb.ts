@@ -1,15 +1,50 @@
 import React from 'react';
-import { ReactTestRendererNode } from 'react-test-renderer';
+import { ReactTestRendererJSON, ReactTestRendererNode } from 'react-test-renderer';
 import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
-
 import * as ReactNativeWeb from 'react-native-web';
 import { logger } from '../utils/logger';
+
+const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
+  // for components like RCTScrollView
+  const nodeType = node.type.replace('RCT', '');
+
+  const RNWebElement = ReactNativeWeb[nodeType as keyof typeof ReactNativeWeb] as
+    | React.ComponentType
+    | undefined;
+
+  const RNWebElFallback = ReactNativeWeb.View;
+
+  if (RNWebElement === undefined) {
+    logger.warn(`No equivalent for ${node.type} in react-native-web`);
+  }
+
+  return RNWebElement ?? RNWebElFallback;
+};
+
+const convertNodeProps = (node: ReactTestRendererJSON) => {
+  const { props, type } = node;
+
+  const newProps = { ...props };
+
+  switch (type) {
+    case 'Image':
+      newProps.source = convertImageSource(props as ImageSourceProp);
+      break;
+    case 'TextInput':
+      newProps.placeholderTextColor = newProps.placeholderTextColor ?? defaultTextPlaceholderColor;
+      break;
+    default:
+  }
+
+  return newProps;
+};
 
 export const transformRNToRNWeb = (
   jsonTree: ReactTestRendererNode | ReactTestRendererNode[] | null,
 ): null | React.ReactNode | React.ReactNode[] => {
-  if (jsonTree === null) return null;
+  // handle different types of react nodes
+  if (jsonTree === null || typeof jsonTree === 'string') return jsonTree;
 
   if (Array.isArray(jsonTree)) {
     return jsonTree.map((node, index) => {
@@ -20,36 +55,11 @@ export const transformRNToRNWeb = (
     });
   }
 
-  if (typeof jsonTree === 'string') {
-    return jsonTree;
-  }
+  // convert react-native nodes to react-native-web nodes
+  const RNWebElement = convertRNNodeToRNWeb(jsonTree);
 
-  const nodeType = jsonTree.type.replace('RCT', '');
-  const RNWebEl = ReactNativeWeb[nodeType as keyof typeof ReactNativeWeb] as
-    | React.ComponentType
-    | undefined;
-  const RNWebElFallback = ReactNativeWeb.View;
+  // convert props
+  const newJsonTreeProps = convertNodeProps(jsonTree);
 
-  if (RNWebEl === undefined) {
-    logger.warn(`No equivalent for ${jsonTree.type} in react-native-web`);
-  }
-
-  const newJsonTreeProps = jsonTree.props;
-
-  switch (jsonTree.type) {
-    case 'Image':
-      newJsonTreeProps.source = convertImageSource(jsonTree.props as ImageSourceProp);
-      break;
-    case 'TextInput':
-      newJsonTreeProps.placeholderTextColor =
-        newJsonTreeProps.placeholderTextColor ?? defaultTextPlaceholderColor;
-      break;
-    default:
-  }
-
-  return React.createElement(
-    RNWebEl ?? RNWebElFallback,
-    newJsonTreeProps,
-    transformRNToRNWeb(jsonTree.children),
-  );
+  return React.createElement(RNWebElement, newJsonTreeProps, transformRNToRNWeb(jsonTree.children));
 };
