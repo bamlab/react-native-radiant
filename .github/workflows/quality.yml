@@ -58,8 +58,11 @@ jobs:
       - name: ESLint
         run: yarn lint
 
-      - name: TypeScript in lib
-        run: yarn test:lib
+      - name: Build library
+        run: yarn build:core
+
+      - name: Build SVG extension
+        run: yarn build:extension:svg
 
       - name: Jest in example app
         run: yarn test:example:ci --maxWorkers=2

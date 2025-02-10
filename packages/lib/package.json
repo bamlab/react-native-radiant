@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "tsc",
     "deploy:patch": "yarn build && yarn version patch",
     "deploy:minor": "yarn build && yarn version minor",
     "deploy:major": "yarn build && yarn version major",
