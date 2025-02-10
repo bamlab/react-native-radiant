@@ -1154,6 +1154,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@bam.tech/react-native-radiant-svg@workspace:packages/extensions/svg"
   dependencies:
+    "@bam.tech/react-native-radiant": "workspace:^"
     typescript: "npm:^5.7.3"
   peerDependencies:
     "@bam.tech/react-native-radiant": "*"

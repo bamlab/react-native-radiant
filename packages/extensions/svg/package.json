@@ -25,6 +25,7 @@
     "react-native-web": "*"
   },
   "devDependencies": {
+    "@bam.tech/react-native-radiant": "workspace:^",
     "typescript": "^5.7.3"
   }
 }
