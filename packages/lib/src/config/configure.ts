@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { ReactTestRendererJSON } from 'react-test-renderer';
 
 type Font = {
@@ -8,7 +7,7 @@ type Font = {
 
 type Mapper = {
   inputElement: string | string[];
-  outputElement: (node: ReactTestRendererJSON) => ReactNode;
+  outputElement: (node: ReactTestRendererJSON) => { type: string; props: Record<string, unknown> };
 };
 
 type ConfigureOptions = {

@@ -1,6 +1,4 @@
-import React, { ReactNode } from 'react';
 import { ReactTestRendererJSON } from 'react-test-renderer';
-import { transformRNToRNWeb } from '@bam.tech/react-native-radiant/src/snapshot/transformRNToRNWeb';
 import { convertInt32ColorToRGBA } from 'react-native-svg/src/web/utils/convertInt32Color';
 import { camelCaseToDashed } from 'react-native-svg/src/web/utils/index';
 
@@ -74,12 +72,12 @@ const convertSVGProps = (props: Record<string, unknown>) => {
 
 const inputElement = Object.keys(svgElementsMap);
 
-const outputElement = (node: ReactTestRendererJSON): ReactNode => {
+const outputElement = (node: ReactTestRendererJSON) => {
   const newType = convertSVGTypeToHTML(node.type);
 
   const newProps = convertSVGProps(node.props);
 
-  return React.createElement(newType, newProps, transformRNToRNWeb(node.children));
+  return { type: newType, props: newProps };
 };
 
-export { inputElement, outputElement };
+export default { inputElement, outputElement };

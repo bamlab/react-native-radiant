@@ -24,12 +24,20 @@ const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
   return RNWebElement ?? RNWebElFallback;
 };
 
-const convertNodeProps = (node: ReactTestRendererJSON) => {
-  const { props, type } = node;
+const convertNodeProps = ({
+  type,
+  props,
+}: {
+  type: string;
+  props: Record<string, unknown> | null;
+}) => {
+  if (props === null) return null;
 
   const newProps = { ...props };
 
-  newProps.style = transformStyle(newProps.style);
+  if (newProps.style) {
+    newProps.style = transformStyle(newProps.style as Record<string, unknown>);
+  }
 
   switch (type) {
     case 'Image':
@@ -59,21 +67,29 @@ export const transformRNToRNWeb = (
     });
   }
 
+  let additionalMapperElement = null;
+  let additionalMapperProps = null;
+
   // call additional mappers first
-  additionalMappers.forEach((mapper) => {
+  for (const mapper of additionalMappers) {
     if (
       (typeof mapper.inputElement === 'string' && jsonTree.type === mapper.inputElement) ||
       (Array.isArray(mapper.inputElement) && mapper.inputElement.includes(jsonTree.type))
     ) {
-      return mapper.outputElement(jsonTree);
+      ({ type: additionalMapperElement, props: additionalMapperProps } =
+        mapper.outputElement(jsonTree));
     }
-  });
+  }
 
   // convert react-native nodes to react-native-web nodes
-  const RNWebElement = convertRNNodeToRNWeb(jsonTree);
+  const RNWebElement = additionalMapperElement ?? convertRNNodeToRNWeb(jsonTree);
 
   // convert props
-  const newJsonTreeProps = convertNodeProps(jsonTree);
+  const newJsonTreeProps = convertNodeProps(
+    additionalMapperElement
+      ? { type: additionalMapperElement, props: additionalMapperProps }
+      : jsonTree,
+  );
 
   return React.createElement(RNWebElement, newJsonTreeProps, transformRNToRNWeb(jsonTree.children));
 };
