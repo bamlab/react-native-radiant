@@ -6,10 +6,18 @@ It is based on [react-native-web](https://github.com/necolas/react-native-web) a
 
 This example app contains a simple React Native app that uses the library, with several example components to demonstrate how the library works.
 
-To run the example app, run the following commands:
+First, you need to build the library:
 
 ```bash
-yarn
+yarn install
+cd packages/lib
+yarn build
+```
+
+Then, you can run the example app:
+
+```bash
+cd packages/example
 yarn start
 ```
 
