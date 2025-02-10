@@ -4,7 +4,7 @@ import { convertImageSource, ImageSourceProp } from './modules/image';
 import { defaultTextPlaceholderColor } from './modules/defaults';
 import * as ReactNativeWeb from 'react-native-web';
 import { logger } from '../utils/logger';
-import { fixStyle } from './modules/style';
+import { transformStyle } from './modules/style';
 
 const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
   // for components like RCTScrollView
@@ -28,7 +28,7 @@ const convertNodeProps = (node: ReactTestRendererJSON) => {
 
   const newProps = { ...props };
 
-  newProps.style = fixStyle(newProps.style);
+  newProps.style = transformStyle(newProps.style);
 
   switch (type) {
     case 'Image':
