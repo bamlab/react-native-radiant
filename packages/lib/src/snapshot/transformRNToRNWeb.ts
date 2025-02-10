@@ -5,11 +5,9 @@ import { defaultTextPlaceholderColor } from './modules/defaults';
 import * as ReactNativeWeb from 'react-native-web';
 import { logger } from '../utils/logger';
 import { transformStyle } from './modules/style';
-import { convertSVGProps, convertSVGTypeToHTML, isElementSVG } from './modules/svg';
+import { additionalMappers } from '../config/configure';
 
 const convertRNNodeToRNWeb = (node: ReactTestRendererJSON) => {
-  if (isElementSVG(node.type)) return convertSVGTypeToHTML(node.type);
-
   // for components like RCTScrollView
   const nodeType = node.type.replace('RCT', '');
 
@@ -32,10 +30,6 @@ const convertNodeProps = (node: ReactTestRendererJSON) => {
   const newProps = { ...props };
 
   newProps.style = transformStyle(newProps.style);
-
-  if (isElementSVG(type)) {
-    return convertSVGProps(newProps);
-  }
 
   switch (type) {
     case 'Image':
@@ -64,6 +58,16 @@ export const transformRNToRNWeb = (
         : transformedNode;
     });
   }
+
+  // call additional mappers first
+  additionalMappers.forEach((mapper) => {
+    if (
+      (typeof mapper.inputElement === 'string' && jsonTree.type === mapper.inputElement) ||
+      (Array.isArray(mapper.inputElement) && mapper.inputElement.includes(jsonTree.type))
+    ) {
+      return mapper.outputElement(jsonTree);
+    }
+  });
 
   // convert react-native nodes to react-native-web nodes
   const RNWebElement = convertRNNodeToRNWeb(jsonTree);
