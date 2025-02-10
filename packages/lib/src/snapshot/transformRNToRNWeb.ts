@@ -31,11 +31,11 @@ const convertNodeProps = (node: ReactTestRendererJSON) => {
 
   const newProps = { ...props };
 
-  if (isElementSVG(type)) {
-    return convertSVGProps(node);
-  }
-
   newProps.style = transformStyle(newProps.style);
+
+  if (isElementSVG(type)) {
+    return convertSVGProps(newProps);
+  }
 
   switch (type) {
     case 'Image':

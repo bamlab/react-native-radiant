@@ -42,9 +42,7 @@ export const isElementSVG = (nodeType: string) => nodeType in svgElementsMap;
 export const convertSVGTypeToHTML = (nodeType: string) => svgElementsMap[nodeType];
 
 // Fix props for converting to HTML
-export const convertSVGProps = (node: ReactTestRendererJSON) => {
-  const { props } = node;
-
+export const convertSVGProps = (props: Record<string, unknown>) => {
   const newProps = { ...props };
 
   // merge styles array as one object
