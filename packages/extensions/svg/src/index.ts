@@ -1,5 +1,7 @@
 import { ReactTestRendererJSON } from 'react-test-renderer';
 import { convertInt32ColorToRGBA, camelCaseToDashed } from './utils';
+import { Mapper } from '@bam.tech/react-native-radiant/src/config/configure';
+import { StyleSheet } from 'react-native';
 
 const svgElementsMap: Record<string, string> = {
   RNSVGSvgView: 'svg',
@@ -39,13 +41,18 @@ const svgElementsMap: Record<string, string> = {
 const convertSVGTypeToHTML = (nodeType: string) => svgElementsMap[nodeType];
 
 // Fix props for converting to HTML
+// This is required because the received props are made for React Native
+// and fill/stroke are objects (this is the behavior of react-native-svg)
 const convertSVGProps = (props: Record<string, unknown>) => {
-  const newProps = { ...props };
+  const newProps = Object.entries(props).reduce((acc, [key, value]) => {
+    const newKey = camelCaseToDashed(key);
+    acc[newKey] = value;
+    return acc;
+  }, {} as Record<string, unknown>);
 
   // merge styles array as one object
-  if (Array.isArray(newProps.style)) {
-    newProps.style = Object.assign({}, ...newProps.style);
-  }
+
+  newProps.style = StyleSheet.flatten(newProps.style);
 
   if (newProps.fill && typeof newProps.fill === 'object') {
     const fillValue = newProps.fill as { payload: number };
@@ -56,15 +63,6 @@ const convertSVGProps = (props: Record<string, unknown>) => {
     const strokeValue = newProps.stroke as { payload: number };
     newProps.stroke = convertInt32ColorToRGBA(strokeValue.payload);
   }
-
-  // convert every prop from camelCase to dashed
-  Object.keys(newProps).forEach((key) => {
-    const newKey = camelCaseToDashed(key);
-    if (newKey !== key) {
-      newProps[newKey] = newProps[key];
-      delete newProps[key];
-    }
-  });
 
   return newProps;
 };
@@ -79,4 +77,4 @@ const outputElement = (node: ReactTestRendererJSON) => {
   return { type: newType, props: newProps };
 };
 
-export default { inputElement, outputElement };
+export default { inputElement, outputElement } satisfies Mapper;
