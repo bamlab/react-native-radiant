@@ -49,14 +49,15 @@ const convertNodeProps = ({
 };
 
 const getWebNode = (rnNode: ReactTestRendererJSON) => {
-  // call additional mappers first
-  for (const mapper of additionalMappers) {
-    if (
+  // search additional mappers first
+  const matchingMapper = additionalMappers.find(
+    (mapper) =>
       (typeof mapper.inputElement === 'string' && rnNode.type === mapper.inputElement) ||
-      (Array.isArray(mapper.inputElement) && mapper.inputElement.includes(rnNode.type))
-    ) {
-      return mapper.outputElement(rnNode);
-    }
+      (Array.isArray(mapper.inputElement) && mapper.inputElement.includes(rnNode.type)),
+  );
+
+  if (matchingMapper) {
+    return matchingMapper.outputElement(rnNode);
   }
 
   // else, convert the node to react-native-web node
