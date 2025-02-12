@@ -42,4 +42,4 @@ function configure(options: ConfigureOptions) {
   }
 }
 
-export { configure, globalFonts, remoteFallbackImage, additionalMappers };
+export { configure, globalFonts, remoteFallbackImage, additionalMappers, Mapper };
