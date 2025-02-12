@@ -1,4 +1,5 @@
 import { configure } from '@bam.tech/react-native-radiant';
+import svgMapper from '@bam.tech/react-native-radiant-svg';
 
 jest.mock('expo-font', () => {
   const module: typeof import('expo-font') = {
@@ -38,4 +39,5 @@ configure({
     },
   ],
   defaultFallbackImage: './assets/default.jpg',
+  additionalMappers: [svgMapper],
 });

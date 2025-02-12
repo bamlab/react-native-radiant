@@ -1,16 +1,26 @@
+import { ReactTestRendererJSON } from 'react-test-renderer';
+
 type Font = {
   fontFamily: string;
   fontPath: string;
 };
 
+type Mapper = {
+  inputElement: string | string[];
+  outputElement: (node: ReactTestRendererJSON) => { type: string; props: Record<string, unknown> };
+};
+
 type ConfigureOptions = {
   fonts?: Font[];
   defaultFallbackImage?: string;
+  additionalMappers?: Mapper[];
 };
 
 const globalFonts: Font[] = [];
 
 let remoteFallbackImage = '';
+
+const additionalMappers: Mapper[] = [];
 
 function configure(options: ConfigureOptions) {
   if (options.fonts) {
@@ -23,6 +33,13 @@ function configure(options: ConfigureOptions) {
   if (options.defaultFallbackImage) {
     remoteFallbackImage = options.defaultFallbackImage;
   }
+
+  if (options.additionalMappers) {
+    if (!Array.isArray(options.additionalMappers)) {
+      throw new Error('options.additionalMappers must be an array');
+    }
+    additionalMappers.push(...options.additionalMappers);
+  }
 }
 
-export { configure, globalFonts, remoteFallbackImage };
+export { configure, globalFonts, remoteFallbackImage, additionalMappers, Mapper };

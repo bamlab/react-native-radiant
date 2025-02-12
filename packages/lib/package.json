@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "tsc",
     "deploy:patch": "yarn build && yarn version patch",
     "deploy:minor": "yarn build && yarn version minor",
     "deploy:major": "yarn build && yarn version major",
@@ -26,6 +25,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-native": "^0.76.2",
+    "react-native-svg": "^15.11.1",
     "react-native-web": "^0.19.13",
     "react-test-renderer": "^18.3.1",
     "tsup": "^8.3.5",

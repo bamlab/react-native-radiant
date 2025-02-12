@@ -16,6 +16,7 @@ const Home = () => {
       <HomeMenuItem title="SectionList" link="/exampleScreens/SectionList" />
       <HomeMenuItem title="ActivityIndicator" link="/exampleScreens/ActivityIndicator" />
       <HomeMenuItem title="FlexZero" link="/exampleScreens/FlexZero" />
+      <HomeMenuItem title="SVGImage" link="/exampleScreens/SVGImage" />
     </ScrollView>
   );
 };
