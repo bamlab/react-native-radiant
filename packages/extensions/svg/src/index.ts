@@ -51,8 +51,9 @@ const convertSVGProps = (props: Record<string, unknown>) => {
   }, {} as Record<string, unknown>);
 
   // merge styles array as one object
-
-  newProps.style = StyleSheet.flatten(newProps.style);
+  if (Array.isArray(newProps.style)) {
+    newProps.style = StyleSheet.flatten(newProps.style);
+  }
 
   if (newProps.fill && typeof newProps.fill === 'object') {
     const fillValue = newProps.fill as { payload: number };
